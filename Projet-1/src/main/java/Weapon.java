@@ -1,24 +1,27 @@
 package main.java;
 
-public class Weapon {
-    private String name;
-    private int attack;
+public class Weapon extends Stuff {
 
     Weapon(String weaponName, int weaponAttack){
-        name = weaponName;
-        attack = weaponAttack;
+        super(weaponName, weaponAttack);
     }
 
+    @Override
     public void setName(String weaponName) {
         this.name = weaponName;
     }
+
+    @Override
     public String getName() {
         return name;
     }
 
-    public void setAttack(String weaponAttack) {
-        this.name = weaponAttack;
+    @Override
+    public void setAttack(int weaponAttack) {
+        this.attack = weaponAttack;
     }
+
+    @Override
     public int getAttack() {
         return attack;
     }

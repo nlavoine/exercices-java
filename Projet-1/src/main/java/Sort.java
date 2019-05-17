@@ -1,25 +1,26 @@
 package main.java;
 
-public class Sort {
+public class Sort extends Stuff{
 
-    private String name;
-    private int attack;
-
-    Sort(String sortName, int sortAttack){
-        name = sortName;
-        attack = sortAttack;
+    Sort(String weaponName, int weaponAttack){
+        super(weaponName, weaponAttack);
     }
 
+    @Override
     public void setName(String sortName) {
         this.name = sortName;
     }
+    @Override
     public String getName() {
         return name;
     }
 
-    public void setAttack(String attackName) {
-        this.name = attackName;
+    @Override
+    public void setAttack(int sortAttack) {
+        this.attack = sortAttack;
     }
+
+    @Override
     public int getAttack() {
         return attack;
     }

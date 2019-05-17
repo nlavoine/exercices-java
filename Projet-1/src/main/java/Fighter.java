@@ -1,7 +1,8 @@
 package main.java;
 
-public abstract class Fighter {
+import java.util.List;
 
+public abstract class Fighter {
 
 
     protected String name;
@@ -16,7 +17,7 @@ public abstract class Fighter {
     protected int power;
 
     abstract void displayInfos();
-    abstract void editInfos();
+    abstract void editInfos(List<Weapon> weaponList, List<Sort> sortList);
     public abstract void setName(String fighterName);
     public abstract void setLife(int fighterLife);
     public abstract void setPower(int fighterPower);
