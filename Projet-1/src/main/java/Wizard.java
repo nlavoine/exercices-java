@@ -20,7 +20,7 @@ public class Wizard extends Fighter {
         System.out.println("Nom : " + this.getName());
         System.out.println("Vie : " + this.getLife());
         System.out.println("Force : " + this.getPower());
-        System.out.println("Arme : " + this.sort.getName());
+        System.out.println("Arme : " + this.sort.getName() + " - " + this.sort.getAttack());
         //System.out.println("Bouclier : "+ this.philter);
         System.out.println("########################");
         System.out.println(" ");
@@ -65,6 +65,7 @@ public class Wizard extends Fighter {
         System.out.println("||");
         System.out.println("||   * Mise à jour du Combattant *");
         System.out.println("======================================");
+        System.out.println(" \n");
     }
 
     public void setName(String fighterName) {

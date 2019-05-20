@@ -20,7 +20,7 @@ public class Warrior extends Fighter {
         System.out.println("Nom : " + this.getName());
         System.out.println("Vie : " + this.getLife());
         System.out.println("Force : " + this.getPower());
-        System.out.println("Arme : " + this.weapon.getName());
+        System.out.println("Arme : " + this.weapon.getName() + " - " + this.weapon.getAttack());
         //System.out.println("Bouclier : " + this.shield);
         System.out.println("########################");
         System.out.println(" ");
@@ -65,6 +65,7 @@ public class Warrior extends Fighter {
         System.out.println("||");
         System.out.println("||   * Mise à jour du Combattant *");
         System.out.println("======================================");
+        System.out.println(" \n");
     }
 
     public void setName(String fighterName) {
