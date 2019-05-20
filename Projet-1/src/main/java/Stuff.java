@@ -1,6 +1,6 @@
 package main.java;
 
-abstract class Stuff {
+public class Stuff {
 
     private String name;
     private int attack;
