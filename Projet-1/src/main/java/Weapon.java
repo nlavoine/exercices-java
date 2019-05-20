@@ -6,23 +6,5 @@ public class Weapon extends Stuff {
         super(weaponName, weaponAttack);
     }
 
-    @Override
-    public void setName(String weaponName) {
-        this.name = weaponName;
-    }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setAttack(int weaponAttack) {
-        this.attack = weaponAttack;
-    }
-
-    @Override
-    public int getAttack() {
-        return attack;
-    }
 }
