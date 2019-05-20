@@ -7,8 +7,8 @@ public class Warrior extends Fighter {
 
     private Stuff weapon;
 
-    Warrior(Weapon fighterWeapon) {
-
+    Warrior(Weapon fighterWeapon, String shield) {
+        super(shield);
         weapon = fighterWeapon;
     }
 

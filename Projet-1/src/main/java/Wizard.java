@@ -7,13 +7,10 @@ public class Wizard extends Fighter {
 
     private Stuff sort;
 
-    Wizard(Sort fighterSort) {
-
+    Wizard(Sort fighterSort, String shield) {
+        super(shield);
         sort = fighterSort;
     }
-
-
-
 
     @Override
     public void setStuff(Stuff fighterSort) {

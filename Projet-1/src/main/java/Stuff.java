@@ -10,7 +10,7 @@ public class Stuff {
         attack = weaponAttack;
     }
 
-
+    /************************************/
 
     void setName(String stuffName) {
         this.name = stuffName;
@@ -19,6 +19,7 @@ public class Stuff {
     String getName() {
         return name;
     }
+    /************************************/
 
     void setAttack(int stuffAttack) {
         this.attack = stuffAttack;
