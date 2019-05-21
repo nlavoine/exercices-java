@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,13 +23,21 @@ public class Game {
 
     private static List<Weapon> weaponList = new ArrayList<>();
     private static List<Sort> sortList = new ArrayList<>();
-    private static List<Fighter> playerList = new ArrayList<>();
-    private static List<Fighter> opponentList = new ArrayList<>();
+
+
+    private static ArrayList<Fighter> playerList = new ArrayList<>();
+    private static ArrayList<Fighter> opponentList = new ArrayList<>();
+
+    //private static ArrayList<ArrayList<Fighter>> fightersList = new ArrayList<>();
+    private static HashMap<String, ArrayList<Fighter>> fightersList = new HashMap<>();
+
 
 
 
 
     Game() {
+        fightersList.put("players", playerList);
+        fightersList.put("opponents", opponentList);
         printTitle();
         initWeapons();
         initSorts();
@@ -73,16 +82,16 @@ public class Game {
 
             switch(selectedOption) {
                 case 1:
-                    displayPlayerList();
+                    displayFightersList("players");
                     break;
                 case 2:
-                    editPlayer();
+                    editFighter("players");
                     break;
                 case 3:
-                    displayOpponentsList();
+                    displayFightersList("opponents");
                     break;
                 case 4:
-                    editOpponent();
+                    editFighter("opponents");
                     break;
                 case 5:
                     goFighting = true;
@@ -111,8 +120,10 @@ public class Game {
 
             int fighterType = Integer.parseInt(sc.nextLine())-1;
 
-            playerList.add(createFighter(fighterType, fighterName));
+            //playerList.add(createFighter(fighterType, fighterName));
+            fightersList.get("players").add(createFighter(fighterType, fighterName));
         }
+
         System.out.println("======================================");
         System.out.println(" \n");
     }
@@ -163,40 +174,6 @@ public class Game {
     }
 
 
-    private void displayPlayerList(){
-        System.out.println("=======================================================================");
-        System.out.println("||                            ATTRIBUTS                              ||");
-        System.out.println("||");
-        for (Fighter player : playerList){
-            System.out.println("Nom : " + player.getName());
-            System.out.println("Type : " + player.getType());
-            System.out.println("Vie : " + player.getLife());
-            System.out.println("Force : " + player.getPower());
-            System.out.println("Arme : " + player.getStuff().getName() + " - " + player.getStuff().getAttack());
-            System.out.println("Bouclier : " + player.getShield());
-            System.out.println("------------------------------------------------------------------");
-        }
-        System.out.println("=======================================================================");
-        System.out.println(" \n");
-
-    }
-
-    private void editPlayer() {
-        System.out.println("=======================================================================");
-        System.out.println("||                          EDITER UN JOUEUR                         ||");
-        System.out.println("||");
-        System.out.println("|| Quel adverssaire voulez-vous modifier :");
-        int index = 0;
-        for (Fighter player : playerList){
-            System.out.println("[" + (index+1) + "]" + player.getName());
-            index++;
-        }
-        int selectedPlayer = (Integer.parseInt(sc.nextLine())-1);
-        editInfos(playerList.get(selectedPlayer));
-
-    }
-
-
     private void initOpponents(){
         System.out.println("=======================================================================");
         System.out.println("||                      Nombre d'adversaire ?                        ||");
@@ -206,7 +183,7 @@ public class Game {
 
 
         for(int i= 0 ; i < nbOpponents; i++){
-            opponentList.add(createOpponent(opponentsNames[i]));
+            fightersList.get("opponents").add(createOpponent(opponentsNames[i]));
         }
         System.out.println("|| " + nbOpponents + " adversaires créés");
         System.out.println("=======================================================================");
@@ -249,11 +226,12 @@ public class Game {
 
 
 
-    private void displayOpponentsList(){
+
+    private void displayFightersList(String team){
         System.out.println("=======================================================================");
         System.out.println("||                          ATTRIBUTS                                ||");
         System.out.println("||");
-        for (Fighter opponent : opponentList){
+        for (Fighter opponent : fightersList.get(team)){
             System.out.println("Nom : " + opponent.getName());
             System.out.println("Type : " + opponent.getType());
             System.out.println("Vie : " + opponent.getLife());
@@ -267,6 +245,34 @@ public class Game {
 
     }
 
+    private void editFighter(String team) {
+        System.out.println("=======================================================================");
+        System.out.println("||                          EDITER UN JOUEUR                         ||");
+        System.out.println("||");
+        System.out.println("|| Quel adverssaire voulez-vous modifier :");
+        int index = 0;
+        for (Fighter player : fightersList.get(team)){
+            System.out.println("[" + (index+1) + "]" + player.getName());
+            index++;
+        }
+        int selectedPlayer = (Integer.parseInt(sc.nextLine())-1);
+        editInfos(playerList.get(selectedPlayer));
+    }
+
+    /*private void editPlayer() {
+        System.out.println("=======================================================================");
+        System.out.println("||                          EDITER UN JOUEUR                         ||");
+        System.out.println("||");
+        System.out.println("|| Quel adverssaire voulez-vous modifier :");
+        int index = 0;
+        for (Fighter player : playerList){
+            System.out.println("[" + (index+1) + "]" + player.getName());
+            index++;
+        }
+        int selectedPlayer = (Integer.parseInt(sc.nextLine())-1);
+        editInfos(playerList.get(selectedPlayer));
+
+    }
     private void editOpponent() {
         System.out.println("=======================================================================");
         System.out.println("||                          EDITER UN ADVERSAIRE                     ||");
@@ -281,7 +287,7 @@ public class Game {
         sc.nextLine();
         editInfos(opponentList.get(selectedOpponent));
 
-    }
+    }*/
 
 
     private static void editInfos(Fighter caracter){
@@ -321,7 +327,7 @@ public class Game {
         }
 
         caracter.setStuff(weaponList.get(sc.nextInt() - 1));
-
+        sc.nextLine();
         System.out.println("||");
         System.out.println("||   * Mise à jour du Combattant *");
         System.out.println("=======================================================================");
