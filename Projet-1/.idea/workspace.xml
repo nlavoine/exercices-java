@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="58356835-7f0b-4b4a-9a04-30a34ce5f345" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fighter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Warrior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Wizard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demenagement/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../demenagement/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.class" beforeDir="false" afterPath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.java" afterDir="false" />
@@ -39,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="211" column="70" selection-start-line="211" selection-start-column="70" selection-end-line="211" selection-end-column="70" />
+            <state relative-caret-position="186">
+              <caret line="162" column="20" lean-forward="true" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -251,12 +245,12 @@
       <updated>1558012737941</updated>
       <workItem from="1558012740958" duration="27015000" />
       <workItem from="1558333967676" duration="21141000" />
-      <workItem from="1558420580420" duration="9360000" />
+      <workItem from="1558420580420" duration="9975000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57516000" />
+    <option name="totallyTimeSpent" value="58131000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -285,7 +279,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293348" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.19629225" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.0697928" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.19629225" />
@@ -416,8 +410,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="211" column="70" selection-start-line="211" selection-start-column="70" selection-end-line="211" selection-end-column="70" />
+        <state relative-caret-position="186">
+          <caret line="162" column="20" lean-forward="true" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

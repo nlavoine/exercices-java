@@ -138,10 +138,9 @@ public class Game {
         System.out.println(" \n");
     }
 
-    private Fighter createFighter(int fighterNumber, String fighterName) {
+    private Fighter createFighter(int fighterNumber, String fighterName ) {
 
         Fighter fighter;
-
 
         System.out.println("||");
         System.out.println("||      *Création du Combattant*");
@@ -180,48 +179,15 @@ public class Game {
         System.out.println("||");
 
         int nbOpponents = Integer.parseInt(sc.nextLine());
-
+        int randType;
 
         for(int i= 0 ; i < nbOpponents; i++){
-            fightersList.get("opponents").add(createOpponent(opponentsNames[i]));
+            randType = (int)( Math.random()*( (fighters.length-1) + 1 ) );
+            fightersList.get("opponents").add(createFighter(randType, opponentsNames[i]));
         }
         System.out.println("|| " + nbOpponents + " adversaires créés");
         System.out.println("=======================================================================");
         System.out.println(" \n");
-    }
-
-    private Fighter createOpponent(String opponentName){
-
-
-        int randType = (int)( Math.random()*( (fighters.length-1) + 1 ) );
-        String opponentType = fighters[randType];
-
-        Fighter opponent;
-        int randShield;
-        switch (randType){
-            case 0 :
-                int randWeapon = (int)( Math.random()*( (weaponList.size()-1) + 1 ) );
-                randShield = (int)( Math.random()*( (shields.length-1) + 1 ) );
-                opponent = new Warrior(weaponList.get(randWeapon), shields[randShield]);
-
-                break;
-
-            case 1:
-                int randSort = (int)( Math.random()*( (sortList.size()-1) + 1 ) );
-                randShield = (int)( Math.random()*( (shields.length-1) + 1 ) );
-                opponent = new Wizard(sortList.get(randSort), philters[randShield]);
-                break;
-            default:
-                opponent = null;
-                break;
-        }
-
-        opponent.setName(opponentName);
-        opponent.setType(opponentType);
-        opponent.setLife((int)( Math.random()*( opponent.maxLife - opponent.minLife + 1 ) ) + opponent.minLife);
-        opponent.setPower((int)( Math.random()*( opponent.maxPower - opponent.minPower + 1 ) ) + opponent.minPower);
-
-        return opponent;
     }
 
 
