@@ -69,21 +69,21 @@ public class Game {
 
     }
 
+    private void initWeapons(){
 
-    private int askOptionsFighter() {
-        System.out.println("=======================================================================");
-        System.out.println("||                   Que souhaitez-vous faire ?                      ||");
-        System.out.println("||                   --> Entrer un numéro : ");
-        int i = 0;
-        for(String option : options){
-            System.out.println("||                 ["+(i+1)+"] " + option);
-            i++;
+        for(String weaponName : weapons){
+            int weaponPower = ((int)( Math.random()*( 10 - 3 + 1 ) ) + 3);
+            weaponList.add(new Weapon(weaponName, weaponPower));
         }
-        System.out.println("=======================================================================");
-        System.out.println(" \n");
 
-        return Integer.parseInt(sc.nextLine());
+    }
 
+    private void initSorts(){
+
+        for(String sortName : sorts){
+            int sortPower = (int)(( Math.random()*( 8 - 5 + 1 ) )+ 5);
+            sortList.add(new Sort(sortName, sortPower));
+        }
     }
 
     private void showOptions(){
@@ -111,6 +111,23 @@ public class Game {
             }
         }
     }
+    private int askOptionsFighter() {
+        System.out.println("=======================================================================");
+        System.out.println("||                   Que souhaitez-vous faire ?                      ||");
+        System.out.println("||                   --> Entrer un numéro : ");
+        int i = 0;
+        for(String option : options){
+            System.out.println("||                 ["+(i+1)+"] " + option);
+            i++;
+        }
+        System.out.println("=======================================================================");
+        System.out.println(" \n");
+
+        return Integer.parseInt(sc.nextLine());
+
+    }
+
+
 
     private void initPlayers(){
         System.out.println("=======================================================================");
@@ -138,41 +155,6 @@ public class Game {
         System.out.println(" \n");
     }
 
-    private Fighter createFighter(int fighterNumber, String fighterName ) {
-
-        Fighter fighter;
-
-        System.out.println("||");
-        System.out.println("||      *Création du Combattant*");
-        System.out.println("|| ");
-
-        switch(fighterNumber) {
-            case 0:
-
-                int randWeapon = (int)( Math.random()*( (weaponList.size()-1) + 1 ) );
-                int randShield = (int)( Math.random()*( (shields.length-1) + 1 ) );
-
-                fighter = new Warrior(weaponList.get(randWeapon), shields[randShield]);
-                break;
-            case 1:
-
-                int randSort = (int)( Math.random()*( (sortList.size()-1) + 1 ) );
-                int randPhilter = (int)( Math.random()*( (philters.length-1) + 1 ) );
-                fighter = new Wizard(sortList.get(randSort), philters[randPhilter]);
-                break;
-            default:
-                fighter = null;
-        }
-
-        fighter.setName(fighterName);
-        fighter.setType(fighters[fighterNumber]);
-        fighter.setLife((int)( Math.random()*( fighter.maxLife - fighter.minLife + 1 ) ) + fighter.minLife);
-        fighter.setPower((int)( Math.random()*( fighter.maxPower - fighter.minPower + 1 ) ) + fighter.minPower);
-
-        return fighter;
-    }
-
-
     private void initOpponents(){
         System.out.println("=======================================================================");
         System.out.println("||                      Nombre d'adversaire ?                        ||");
@@ -188,6 +170,32 @@ public class Game {
         System.out.println("|| " + nbOpponents + " adversaires créés");
         System.out.println("=======================================================================");
         System.out.println(" \n");
+    }
+
+    private Fighter createFighter(int fighterNumber, String fighterName ) {
+        Fighter fighter;
+        String fighterType = fighters[fighterNumber];
+
+        int randStuff = (int)( Math.random()*( (stuffList.get(fighterType).size()-1) + 1 ) );
+        int randSecondary = (int)( Math.random()*( (secondaryList.get(fighterType).length-1) + 1 ) );
+
+        switch(fighterNumber) {
+            case 0:
+                fighter = new Warrior(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType)[randSecondary]);
+                break;
+            case 1:
+                fighter = new Wizard(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType)[randSecondary]);
+                break;
+            default:
+                fighter = null;
+        }
+
+        fighter.setName(fighterName);
+        fighter.setType(fighters[fighterNumber]);
+        fighter.setLife((int)( Math.random()*( fighter.maxLife - fighter.minLife + 1 ) ) + fighter.minLife);
+        fighter.setPower((int)( Math.random()*( fighter.maxPower - fighter.minPower + 1 ) ) + fighter.minPower);
+
+        return fighter;
     }
 
 
@@ -286,22 +294,4 @@ public class Game {
         System.out.println("=======================================================================");
         System.out.println(" \n");
     }
-
-    private void initWeapons(){
-
-        for(String weaponName : weapons){
-            int weaponPower = ((int)( Math.random()*( 10 - 3 + 1 ) ) + 3);
-            weaponList.add(new Weapon(weaponName, weaponPower));
-        }
-
-    }
-
-    private void initSorts(){
-
-        for(String sortName : sorts){
-            int sortPower = (int)(( Math.random()*( 8 - 5 + 1 ) )+ 5);
-            sortList.add(new Sort(sortName, sortPower));
-        }
-    }
-
 }
