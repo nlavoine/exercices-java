@@ -6,7 +6,6 @@ package main.java;
  */
 public class Main {
 
-
     /**
      * @param args Default Main method with default args
      */
@@ -14,5 +13,4 @@ public class Main {
         Game game = new Game();
         game.play();
     }
-
 }

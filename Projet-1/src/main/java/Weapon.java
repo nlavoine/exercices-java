@@ -2,8 +2,8 @@ package main.java;
 
 public class Weapon extends Stuff {
 
-    Weapon(String weaponName, int weaponAttack){
-        super(weaponName, weaponAttack);
+    Weapon(String stuffName, int stuffAttack){
+        super(stuffName, stuffAttack);
     }
 
 }

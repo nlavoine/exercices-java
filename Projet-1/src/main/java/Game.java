@@ -1,5 +1,7 @@
 package main.java;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -173,33 +175,43 @@ class Game {
     }
 
     private Fighter createFighter(int fighterNumber, String fighterName ) {
-        //Fighter fighter;
+        Fighter fighter;
         String fighterType = fighters[fighterNumber];
 
         int randStuff = (int)( Math.random()*( (stuffList.get(fighterType).size()-1) + 1 ) );
         int randSecondary = (int)( Math.random()*( (secondaryList.get(fighterType).length-1) + 1 ) );
 
-        String fullPath = "main.java"+fighterType;
+        switch(fighterNumber) {
+            case 0:
+                fighter = new Warrior(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType)[randSecondary]);
+                break;
+            case 1:
+                fighter = new Wizard(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType)[randSecondary]);
+                break;
+            default:
+                fighter = null;
+        }
+
+        /*String fullPath = "main.java."+fighterType;
         Fighter fighter = null;
         try {
             Class<?> clazz = Class.forName(fullPath);
-              fighter = ((Fighter)clazz.newInstance());
-
-
+            Constructor<?> constructor = clazz.getConstructor(Stuff.class,String.class);
+            fighter = ((Fighter)constructor.newInstance(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType)[randSecondary]));
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
-        //Class<main.java.Warrior> clazz = main.java.Warrior;
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }*/
 
         fighter.setName(fighterName);
         fighter.setType(fighters[fighterNumber]);
-        fighter.setLife((int)( Math.random()*( fighter.MAX_LIFE - fighter.MIN_LIFE + 1 ) ) + fighter.MIN_LIFE);
-        fighter.setPower((int)( Math.random()*( fighter.MAX_POWER - fighter.MIN_POWER + 1 ) ) + fighter.MIN_POWER);
-
         return fighter;
     }
 
