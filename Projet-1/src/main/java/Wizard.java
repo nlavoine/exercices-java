@@ -1,15 +1,14 @@
 package main.java;
 
-import java.util.Scanner;
 
 public class Wizard extends Fighter {
-    Scanner sc = new Scanner(System.in);
 
     private Stuff sort;
+    private String philter;
 
-    Wizard(Sort fighterSort, String shield) {
-        super(shield);
-        sort = fighterSort;
+    Wizard(Stuff fighterSort, String philter) {
+        setStuff(fighterSort);
+        setSecondary(philter);
     }
 
     @Override
@@ -22,5 +21,15 @@ public class Wizard extends Fighter {
     public Stuff getStuff() {
 
         return sort;
+    }
+    /************************************/
+    public void setSecondary(String fighterPhilter) {
+
+        this.philter = fighterPhilter;
+    }
+
+    public String getSecondary() {
+
+        return philter;
     }
 }

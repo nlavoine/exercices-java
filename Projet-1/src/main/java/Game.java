@@ -1,5 +1,6 @@
 package main.java;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    private static Scanner sc = new Scanner(System.in);
+    private  Scanner sc = new Scanner(System.in);
     private static final String[] fighters = {"Warrior", "Wizard"};
     private static final String[] options = {"Afficher les infos des joueurs", "Modifier les infos du personnage","Afficher les infos des adversaires", "Modifier les infos des adversaires", "Combattre !"};
 
@@ -18,26 +19,36 @@ public class Game {
     private static final String[] sorts = {"Etincelle du marchand", "Souffle fétide"};
     private static final String[] philters = {"Potion de soin min", "Plume de Phoenix"};
 
+
+
     private static final String[] opponentsNames = {"Beus","Dorusmoricu","Eodi","Falem","Hipo","Hontrote","Iaxenteran","Kroneul","Krseta","Krus","Leulaeagore","Lionusury","Maise","Mpynasytei","Thaeg","Tussiare","Visiteres","Visust","Viusopel","Xemel"};
 
 
-    private static List<Weapon> weaponList = new ArrayList<>();
-    private static List<Sort> sortList = new ArrayList<>();
+    private static ArrayList<Stuff> weaponList = new ArrayList<>();
+    private static ArrayList<Stuff> sortList = new ArrayList<>();
 
 
     private static ArrayList<Fighter> playerList = new ArrayList<>();
     private static ArrayList<Fighter> opponentList = new ArrayList<>();
 
-    //private static ArrayList<ArrayList<Fighter>> fightersList = new ArrayList<>();
+    private static HashMap<String, ArrayList<Stuff>> stuffList = new HashMap<>();
+    private static HashMap<String, String[]> secondaryList = new HashMap<>();
     private static HashMap<String, ArrayList<Fighter>> fightersList = new HashMap<>();
 
 
+    public Game() {
 
+        stuffList.put("Warrior", weaponList);
+        stuffList.put("Wizard", sortList);
 
+        secondaryList.put("Warrior", shields);
+        secondaryList.put("Wizard", philters);
 
-    Game() {
         fightersList.put("players", playerList);
         fightersList.put("opponents", opponentList);
+    }
+
+    void play(){
         printTitle();
         initWeapons();
         initSorts();
@@ -46,7 +57,7 @@ public class Game {
         showOptions();
     }
 
-    private static void printTitle() {
+    private void printTitle() {
 
         System.out.println("  ██▄     ▄      ▄     ▄▀  ▄███▄   ████▄    ▄           ██▄   █▄▄▄▄ ██     ▄▀  ████▄    ▄ ");
         System.out.println("  █  █     █      █  ▄▀    █▀   ▀  █   █     █          █  █  █  ▄▀ █ █  ▄▀    █   █     █ ");
@@ -59,7 +70,7 @@ public class Game {
     }
 
 
-    private static int askOptionsFighter() {
+    private int askOptionsFighter() {
         System.out.println("=======================================================================");
         System.out.println("||                   Que souhaitez-vous faire ?                      ||");
         System.out.println("||                   --> Entrer un numéro : ");
@@ -130,7 +141,7 @@ public class Game {
     private Fighter createFighter(int fighterNumber, String fighterName) {
 
         Fighter fighter;
-        int randShield;
+
 
         System.out.println("||");
         System.out.println("||      *Création du Combattant*");
@@ -140,14 +151,15 @@ public class Game {
             case 0:
 
                 int randWeapon = (int)( Math.random()*( (weaponList.size()-1) + 1 ) );
-                randShield = (int)( Math.random()*( (shields.length-1) + 1 ) );
+                int randShield = (int)( Math.random()*( (shields.length-1) + 1 ) );
+
                 fighter = new Warrior(weaponList.get(randWeapon), shields[randShield]);
                 break;
             case 1:
 
                 int randSort = (int)( Math.random()*( (sortList.size()-1) + 1 ) );
-                randShield = (int)( Math.random()*( (shields.length-1) + 1 ) );
-                fighter = new Wizard(sortList.get(randSort), shields[randShield]);
+                int randPhilter = (int)( Math.random()*( (philters.length-1) + 1 ) );
+                fighter = new Wizard(sortList.get(randSort), philters[randPhilter]);
                 break;
             default:
                 fighter = null;
@@ -197,7 +209,7 @@ public class Game {
             case 1:
                 int randSort = (int)( Math.random()*( (sortList.size()-1) + 1 ) );
                 randShield = (int)( Math.random()*( (shields.length-1) + 1 ) );
-                opponent = new Wizard(sortList.get(randSort), shields[randShield]);
+                opponent = new Wizard(sortList.get(randSort), philters[randShield]);
                 break;
             default:
                 opponent = null;
@@ -217,13 +229,17 @@ public class Game {
         System.out.println("=======================================================================");
         System.out.println("||                          ATTRIBUTS                                ||");
         System.out.println("||");
-        for (Fighter opponent : fightersList.get(team)){
-            System.out.println("Nom : " + opponent.getName());
-            System.out.println("Type : " + opponent.getType());
-            System.out.println("Vie : " + opponent.getLife());
-            System.out.println("Force : " + opponent.getPower());
-            System.out.println("Arme : " + opponent.getStuff().getName() + " - " + opponent.getStuff().getAttack());
-            System.out.println("Bouclier : " + opponent.getShield());
+        for (Fighter fighter : fightersList.get(team)){
+            System.out.println("Nom : " + fighter.getName());
+            System.out.println("Type : " + fighter.getType());
+            System.out.println("Vie : " + fighter.getLife());
+            System.out.println("Force : " + fighter.getPower());
+            System.out.println("Arme : " + fighter.getStuff().getName() + " - " + fighter.getStuff().getAttack());
+
+            String secondaryP1 =fighter.getType() == fighters[0] ? "Bouclier : " : "Philtre : ";
+            String secondaryP2=fighter.getSecondary();
+
+            System.out.println(secondaryP1 + secondaryP2);
             System.out.println("-----------------------------------------------------------------------");
         }
         System.out.println("=======================================================================");
@@ -246,7 +262,7 @@ public class Game {
     }
 
 
-    private static void editInfos(Fighter caracter){
+    private void editInfos(Fighter caracter){
         System.out.println("=======================================================================");
         System.out.println("||                              ATTRIBUTS                             ||");
         System.out.println("||");
@@ -278,22 +294,25 @@ public class Game {
         System.out.println("|| Arme de " + caracter.getName() + " : " + caracter.getStuff().getName());
         System.out.println("||**** Quelle arme souhaitez-vous lui équiper ?");
         System.out.println("||");
-        for (int i = 0; i < weaponList.size(); i++) {
-            System.out.println("||     [" + (i + 1) + "] " + weaponList.get(i).getName());
+
+        for (int i = 0; i < stuffList.get(caracter.getType()).size(); i++) {
+            System.out.println("||     [" + (i + 1) + "] " + stuffList.get(caracter.getType()).get(i).getName());
         }
 
         caracter.setStuff(weaponList.get(sc.nextInt() - 1));
         sc.nextLine();
 
+        String secondaryP1 = caracter.getType() == fighters[0] ? "|| Bouclier de " : "|| Philtre de ";
+        String secondaryP2 = caracter.getName() + " : " + caracter.getSecondary();
+        System.out.println(secondaryP1 + secondaryP2);
 
-        System.out.println("|| Bouclier de " + caracter.getName() + " : " + caracter.getShield());
-        System.out.println("||**** Quelle arme souhaitez-vous lui équiper ?");
+        System.out.println("||**** Quelle équipement secondaire souhaitez-vous lui équiper ?");
         System.out.println("||");
-        for (int i = 0; i < shields.length; i++) {
-            System.out.println("||     [" + (i + 1) + "] " + shields[i]);
+        for (int i = 0; i < secondaryList.get(caracter.getType()).length; i++) {
+            System.out.println("||     [" + (i + 1) + "] " + secondaryList.get(caracter.getType())[i]);
         }
 
-        caracter.setShield(shields[sc.nextInt() - 1]);
+        caracter.setSecondary(secondaryList.get(caracter.getType())[sc.nextInt() - 1]);
         sc.nextLine();
 
         System.out.println("||");
@@ -302,7 +321,7 @@ public class Game {
         System.out.println(" \n");
     }
 
-    private static void initWeapons(){
+    private void initWeapons(){
 
         for(String weaponName : weapons){
             int weaponPower = ((int)( Math.random()*( 10 - 3 + 1 ) ) + 3);
@@ -311,7 +330,7 @@ public class Game {
 
     }
 
-    private static void initSorts(){
+    private void initSorts(){
 
         for(String sortName : sorts){
             int sortPower = (int)(( Math.random()*( 8 - 5 + 1 ) )+ 5);

@@ -6,5 +6,4 @@ public class Weapon extends Stuff {
         super(weaponName, weaponAttack);
     }
 
-
 }

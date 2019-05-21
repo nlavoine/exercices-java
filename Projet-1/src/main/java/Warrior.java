@@ -1,15 +1,15 @@
 package main.java;
 
-import java.util.Scanner;
 
 public class Warrior extends Fighter {
-    Scanner sc = new Scanner(System.in);
 
     private Stuff weapon;
+    private String shield;
 
-    Warrior(Weapon fighterWeapon, String shield) {
-        super(shield);
-        weapon = fighterWeapon;
+    Warrior(Stuff fighterWeapon, String shield) {
+        setStuff(fighterWeapon);
+        setSecondary(shield);
+
     }
 
     @Override
@@ -22,5 +22,18 @@ public class Warrior extends Fighter {
     public Stuff getStuff() {
 
         return weapon;
+    }
+
+    /************************************/
+    @Override
+    public void setSecondary(String fighterShield) {
+
+        this.shield = fighterShield;
+    }
+
+    @Override
+    public String getSecondary() {
+
+        return shield;
     }
 }

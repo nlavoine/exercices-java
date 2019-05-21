@@ -15,11 +15,10 @@ public abstract class Fighter {
     private int life;
     private int power;
     private String type;
-    private String shield;
 
-    Fighter(String shield){
+    /*Fighter(String shield){
         this.shield = shield;
-    }
+    }*/
 
     /************************************/
 
@@ -53,7 +52,7 @@ public abstract class Fighter {
 
     int getPower() {
 
-        return power;
+        return this.power;
     }
     /************************************/
 
@@ -67,18 +66,13 @@ public abstract class Fighter {
         return type;
     }
 
-    /************************************/
-    void setShield(String fighterShield) {
 
-        this.shield = fighterShield;
-    }
-
-    String getShield() {
-
-        return shield;
-    }
 
     public abstract void setStuff(Stuff fighterStuff);
 
     public abstract Stuff getStuff();
+
+    public abstract void setSecondary(String fighterSecondary);
+
+    public abstract String getSecondary();
 }
