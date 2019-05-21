@@ -3,24 +3,12 @@ package main.java;
 
 public abstract class Fighter {
 
-
     private String name;
-    //private String image;
-
-    final static int minLife = 5;
-    final static int maxLife = 10;
-    final static int minPower = 5;
-    final static int maxPower = 10;
-
-    private int life;
-    private int power;
     private String type;
 
-    /*Fighter(String shield){
-        this.shield = shield;
-    }*/
 
     /************************************/
+
 
     void setName(String fighterName) {
 
@@ -32,28 +20,7 @@ public abstract class Fighter {
 
         return name;
     }
-    /************************************/
 
-    void setLife(int fighterLife) {
-
-        this.life = fighterLife;
-    }
-
-    int getLife() {
-
-        return life;
-    }
-    /************************************/
-
-    void setPower(int fighterPower) {
-
-        this.power = fighterPower;
-    }
-
-    int getPower() {
-
-        return this.power;
-    }
     /************************************/
 
     void setType(String fighterType) {
@@ -75,4 +42,12 @@ public abstract class Fighter {
     public abstract void setSecondary(String fighterSecondary);
 
     public abstract String getSecondary();
+
+    abstract void setLife(int fighterLife);
+
+    abstract int getLife();
+
+    abstract void setPower(int fighterPower);
+
+    abstract int getPower();
 }

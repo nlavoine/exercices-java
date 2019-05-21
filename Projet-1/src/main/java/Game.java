@@ -1,12 +1,10 @@
 package main.java;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
-public class Game {
+class Game {
 
     private  Scanner sc = new Scanner(System.in);
     private static final String[] fighters = {"Warrior", "Wizard"};
@@ -36,7 +34,7 @@ public class Game {
     private static HashMap<String, ArrayList<Fighter>> fightersList = new HashMap<>();
 
 
-    public Game() {
+    Game() {
 
         stuffList.put("Warrior", weaponList);
         stuffList.put("Wizard", sortList);
@@ -58,14 +56,16 @@ public class Game {
     }
 
     private void printTitle() {
-
-        System.out.println("  ██▄     ▄      ▄     ▄▀  ▄███▄   ████▄    ▄           ██▄   █▄▄▄▄ ██     ▄▀  ████▄    ▄ ");
-        System.out.println("  █  █     █      █  ▄▀    █▀   ▀  █   █     █          █  █  █  ▄▀ █ █  ▄▀    █   █     █ ");
-        System.out.println("  █   █ █   █ ██   █ █ ▀▄  ██▄▄    █   █ ██   █         █   █ █▀▀▌  █▄▄█ █ ▀▄  █   █ ██   █ ");
-        System.out.println("  █  █  █   █ █ █  █ █   █ █▄   ▄▀ ▀████ █ █  █         █  █  █  █  █  █ █   █ ▀████ █ █  █ ");
-        System.out.println("  ███▀  █▄ ▄█ █  █ █  ███  ▀███▀         █  █ █    &    ███▀    █      █  ███        █  █ █ ");
-        System.out.println("         ▀▀▀  █   ██                     █   ██                ▀      █              █   ██ ");
-        System.out.println("                                                                     ▀ ");
+        System.out.println("||======================================================================================================||");
+        System.out.println("||                                                                                                      ||");
+        System.out.println("||      ██▄     ▄      ▄     ▄▀  ▄███▄   ████▄    ▄           ██▄   █▄▄▄▄ ██     ▄▀  ████▄    ▄         ||");
+        System.out.println("||      █  █     █      █  ▄▀    █▀   ▀  █   █     █          █  █  █  ▄▀ █ █  ▄▀    █   █     █        ||");
+        System.out.println("||      █   █ █   █ ██   █ █ ▀▄  ██▄▄    █   █ ██   █         █   █ █▀▀▌  █▄▄█ █ ▀▄  █   █ ██   █       ||");
+        System.out.println("||      █  █  █   █ █ █  █ █   █ █▄   ▄▀ ▀████ █ █  █         █  █  █  █  █  █ █   █ ▀████ █ █  █       ||");
+        System.out.println("||      ███▀  █▄ ▄█ █  █ █  ███  ▀███▀         █  █ █    &    ███▀    █      █  ███        █  █ █       ||");
+        System.out.println("||             ▀▀▀  █   ██                     █   ██                ▀      █              █   ██       ||");
+        System.out.println("||                                                                         ▀                            ||");
+        System.out.println("||======================================================================================================||");
 
     }
 
@@ -173,27 +173,32 @@ public class Game {
     }
 
     private Fighter createFighter(int fighterNumber, String fighterName ) {
-        Fighter fighter;
+        //Fighter fighter;
         String fighterType = fighters[fighterNumber];
 
         int randStuff = (int)( Math.random()*( (stuffList.get(fighterType).size()-1) + 1 ) );
         int randSecondary = (int)( Math.random()*( (secondaryList.get(fighterType).length-1) + 1 ) );
 
-        switch(fighterNumber) {
-            case 0:
-                fighter = new Warrior(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType)[randSecondary]);
-                break;
-            case 1:
-                fighter = new Wizard(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType)[randSecondary]);
-                break;
-            default:
-                fighter = null;
+        String fullPath = "main.java"+fighterType;
+        Fighter fighter = null;
+        try {
+            Class<?> clazz = Class.forName(fullPath);
+              fighter = ((Fighter)clazz.newInstance());
+
+
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+        //Class<main.java.Warrior> clazz = main.java.Warrior;
 
         fighter.setName(fighterName);
         fighter.setType(fighters[fighterNumber]);
-        fighter.setLife((int)( Math.random()*( fighter.maxLife - fighter.minLife + 1 ) ) + fighter.minLife);
-        fighter.setPower((int)( Math.random()*( fighter.maxPower - fighter.minPower + 1 ) ) + fighter.minPower);
+        fighter.setLife((int)( Math.random()*( fighter.MAX_LIFE - fighter.MIN_LIFE + 1 ) ) + fighter.MIN_LIFE);
+        fighter.setPower((int)( Math.random()*( fighter.MAX_POWER - fighter.MIN_POWER + 1 ) ) + fighter.MIN_POWER);
 
         return fighter;
     }
@@ -210,7 +215,7 @@ public class Game {
             System.out.println("Force : " + fighter.getPower());
             System.out.println("Arme : " + fighter.getStuff().getName() + " - " + fighter.getStuff().getAttack());
 
-            String secondaryP1 =fighter.getType() == fighters[0] ? "Bouclier : " : "Philtre : ";
+            String secondaryP1 = fighter.getType().equals(fighters[0]) ? "Bouclier : " : "Philtre : ";
             String secondaryP2=fighter.getSecondary();
 
             System.out.println(secondaryP1 + secondaryP2);
