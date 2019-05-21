@@ -120,7 +120,6 @@ public class Game {
 
             int fighterType = Integer.parseInt(sc.nextLine())-1;
 
-            //playerList.add(createFighter(fighterType, fighterName));
             fightersList.get("players").add(createFighter(fighterType, fighterName));
         }
 
@@ -132,30 +131,19 @@ public class Game {
 
         Fighter fighter;
         int randShield;
+
+        System.out.println("||");
+        System.out.println("||      *Création du Combattant*");
+        System.out.println("|| ");
+
         switch(fighterNumber) {
             case 0:
-
-                System.out.println("||      Armes disponibles :         ");
-                for(Weapon weapon : weaponList) {
-                    System.out.println("||      # " + weapon.getName() + " - " + weapon.getAttack() + " points d'attaque");
-                }
-                System.out.println("||");
-                System.out.println("||      *Création du Combattant*");
-                System.out.println("|| ");
 
                 int randWeapon = (int)( Math.random()*( (weaponList.size()-1) + 1 ) );
                 randShield = (int)( Math.random()*( (shields.length-1) + 1 ) );
                 fighter = new Warrior(weaponList.get(randWeapon), shields[randShield]);
                 break;
             case 1:
-
-                System.out.println("|| Sorts disponibles : ");
-                for(Sort sort : sortList) {
-                    System.out.println("||      # " + sort.getName() + " - " + sort.getAttack() + " points d'attaque");
-                }
-                System.out.println("||");
-                System.out.println("|| *Création du Combattant*");
-                System.out.println("|| ");
 
                 int randSort = (int)( Math.random()*( (sortList.size()-1) + 1 ) );
                 randShield = (int)( Math.random()*( (shields.length-1) + 1 ) );
@@ -225,8 +213,6 @@ public class Game {
     }
 
 
-
-
     private void displayFightersList(String team){
         System.out.println("=======================================================================");
         System.out.println("||                          ATTRIBUTS                                ||");
@@ -258,36 +244,6 @@ public class Game {
         int selectedPlayer = (Integer.parseInt(sc.nextLine())-1);
         editInfos(playerList.get(selectedPlayer));
     }
-
-    /*private void editPlayer() {
-        System.out.println("=======================================================================");
-        System.out.println("||                          EDITER UN JOUEUR                         ||");
-        System.out.println("||");
-        System.out.println("|| Quel adverssaire voulez-vous modifier :");
-        int index = 0;
-        for (Fighter player : playerList){
-            System.out.println("[" + (index+1) + "]" + player.getName());
-            index++;
-        }
-        int selectedPlayer = (Integer.parseInt(sc.nextLine())-1);
-        editInfos(playerList.get(selectedPlayer));
-
-    }
-    private void editOpponent() {
-        System.out.println("=======================================================================");
-        System.out.println("||                          EDITER UN ADVERSAIRE                     ||");
-        System.out.println("||");
-        System.out.println("|| Quel adverssaire voulez-vous modifier :");
-        int index = 0;
-        for (Fighter opponent : opponentList){
-            System.out.println("[" + (index+1) + "]" + opponent.getName());
-            index++;
-        }
-        int selectedOpponent = (sc.nextInt()-1);
-        sc.nextLine();
-        editInfos(opponentList.get(selectedOpponent));
-
-    }*/
 
 
     private static void editInfos(Fighter caracter){
@@ -328,6 +284,18 @@ public class Game {
 
         caracter.setStuff(weaponList.get(sc.nextInt() - 1));
         sc.nextLine();
+
+
+        System.out.println("|| Bouclier de " + caracter.getName() + " : " + caracter.getShield());
+        System.out.println("||**** Quelle arme souhaitez-vous lui équiper ?");
+        System.out.println("||");
+        for (int i = 0; i < shields.length; i++) {
+            System.out.println("||     [" + (i + 1) + "] " + shields[i]);
+        }
+
+        caracter.setShield(shields[sc.nextInt() - 1]);
+        sc.nextLine();
+
         System.out.println("||");
         System.out.println("||   * Mise à jour du Combattant *");
         System.out.println("=======================================================================");
