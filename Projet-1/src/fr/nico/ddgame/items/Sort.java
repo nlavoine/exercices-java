@@ -1,8 +1,8 @@
-package main.java;
+package fr.nico.ddgame.items;
 
 public class Sort extends Stuff{
 
-    Sort(String stuffName, int stuffPower){
+    public Sort(String stuffName, int stuffPower){
         super(stuffName, stuffPower);
     }
 

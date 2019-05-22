@@ -1,4 +1,4 @@
-package main.java;
+package fr.nico.ddgame.items;
 
 public class Stuff {
 
@@ -12,20 +12,20 @@ public class Stuff {
 
     /************************************/
 
-    /*void setName(String stuffName) {
+    /*public void setName(String stuffName) {
         this.name = stuffName;
     }*/
 
-    String getName() {
+    public String getName() {
         return name;
     }
     /************************************/
 
-    /*void setAttack(int stuffAttack) {
+    /*public void setAttack(int stuffAttack) {
         this.power = stuffAttack;
     }*/
 
-    int getPower() {
+    public int getPower() {
         return power;
     }
 

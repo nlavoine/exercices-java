@@ -1,8 +1,8 @@
-package main.java;
+package fr.nico.ddgame.items;
 
 public class Weapon extends Stuff {
 
-    Weapon(String stuffName, int stuffPower){
+    public Weapon(String stuffName, int stuffPower){
         super(stuffName, stuffPower);
     }
 

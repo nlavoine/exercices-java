@@ -1,8 +1,8 @@
-package main.java;
+package fr.nico.ddgame.items;
 
 public class Philter extends Stuff {
 
-    Philter(String stuffName, int stuffPower){
+    public Philter(String stuffName, int stuffPower){
         super(stuffName, stuffPower);
     }
 

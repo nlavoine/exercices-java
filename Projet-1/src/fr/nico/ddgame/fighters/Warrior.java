@@ -1,4 +1,6 @@
-package main.java;
+package fr.nico.ddgame.fighters;
+
+import fr.nico.ddgame.items.Stuff;
 
 public class Warrior extends Fighter {
 
@@ -17,7 +19,7 @@ public class Warrior extends Fighter {
      * @param fighterWeapon     Object : "Stuff" du warrior
      * @param fighterShield            String : "Shield" du warrior
      */
-    Warrior(Stuff fighterWeapon, Stuff fighterShield) {
+    public Warrior(Stuff fighterWeapon, Stuff fighterShield) {
         setStuff(fighterWeapon);
         setSecondary(fighterShield);
         this.life = generateLife()*5;
@@ -81,26 +83,26 @@ public class Warrior extends Fighter {
     }
     /************************************/
     @Override
-    void setLife(int fighterLife) {
+    public void setLife(int fighterLife) {
 
         this.life = fighterLife;
     }
 
     @Override
-    int getLife() {
+    public int getLife() {
 
         return life;
     }
     /************************************/
 
     @Override
-    void setPower(int fighterPower) {
+    public void setPower(int fighterPower) {
 
         this.power = fighterPower;
     }
 
     @Override
-    int getPower() {
+    public int getPower() {
 
         return this.power;
     }

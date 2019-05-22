@@ -1,7 +1,12 @@
-package main.java;
+package fr.nico.ddgame;
 
 //import java.lang.reflect.Constructor;
 //import java.lang.reflect.InvocationTargetException;
+import fr.nico.ddgame.fighters.Fighter;
+import fr.nico.ddgame.fighters.Warrior;
+import fr.nico.ddgame.fighters.Wizard;
+import fr.nico.ddgame.items.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -73,26 +78,29 @@ class Game {
 
 
 
-
-
+//۸
+//٧
     /**
      * Display game title
      */
     private void printTitle() {
-        System.out.println("                                                ⎛⎝_____⎠⎞                                                   ");
-        System.out.println("                                                ⎝       ⎠                                                   ");
-        System.out.println("                                                ⎛('⎝ ⎠')⎞                                                   ");
+        System.out.println("                                                                                                          ");
+        System.out.println("                                    ˏ           ⎛⎝     ⎠⎞            ˎ                                    ");
+        System.out.println("                                ˏ  ⎛(           ⎝ ◟   ◞ ⎠            )⎞  ˎ                                ");
+        System.out.println("                               ⎛⎝ ⎛  ⎝         ≼⎛(¤⎝͡⎠¤)⎞≽          ⎠  ⎞ ⎠⎞                               ");
         System.out.println("❨◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜❩");
-        System.out.println(" ❩                                                                                                      ❨");
+        System.out.println(" ❩                                                                                                      ❨ ");
         System.out.println("❨       ██▄     ▄      ▄     ▄▀  ▄███▄   ████▄    ▄           ██▄   █▄▄▄▄ ██     ▄▀  ████▄    ▄          ❩");
-        System.out.println(" ❩      █  █     █      █  ▄▀    █▀   ▀  █   █     █          █  █  █  ▄▀ █ █  ▄▀    █   █     █        ❨");
+        System.out.println(" ❩      █  █     █      █  ▄▀    █▀   ▀  █   █     █          █  █  █  ▄▀ █ █  ▄▀    █   █     █        ❨ ");
         System.out.println("❨       █   █ █   █ ██   █ █ ▀▄  ██▄▄    █   █ ██   █         █   █ █▀▀▌  █▄▄█ █ ▀▄  █   █ ██   █        ❩");
-        System.out.println(" ❩      █  █  █   █ █ █  █ █   █ █▄   ▄▀ ▀████ █ █  █         █  █  █  █  █  █ █   █ ▀████ █ █  █       ❨");
+        System.out.println(" ❩      █  █  █   █ █ █  █ █   █ █▄   ▄▀ ▀████ █ █  █         █  █  █  █  █  █ █   █ ▀████ █ █  █       ❨ ");
         System.out.println("❨       ███▀  █▄ ▄█ █  █ █  ███  ▀███▀         █  █ █    &    ███▀    █      █  ███        █  █ █        ❩");
-        System.out.println(" ❩             ▀▀▀  █   ██                     █   ██                ▀      █              █   ██       ❨");
+        System.out.println(" ❩             ▀▀▀  █   ██                     █   ██                ▀      █              █   ██       ❨ ");
         System.out.println("❨                                                                          ▀                             ❩");
-        System.out.println(" ◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜");
-        System.out.println("                                                   ⎞⎠⎝⎛                                                   ");
+        System.out.println(" ◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜ ");
+        System.out.println("                                   ⎞⎠               ٧               ⎝⎛                                    ");
+        System.out.println("                                                                                                          ");
+        System.out.println("                                                                                                          ");
     }
 
 

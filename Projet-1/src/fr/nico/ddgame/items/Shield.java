@@ -1,8 +1,8 @@
-package main.java;
+package fr.nico.ddgame.items;
 
 public class Shield extends Stuff {
 
-    Shield(String stuffName, int stuffPower){
+    public Shield(String stuffName, int stuffPower){
         super(stuffName, stuffPower);
     }
 

@@ -1,5 +1,7 @@
-package main.java;
+package fr.nico.ddgame.fighters;
 
+
+import fr.nico.ddgame.items.Stuff;
 
 public abstract class Fighter {
 
@@ -10,25 +12,25 @@ public abstract class Fighter {
     /************************************/
 
 
-    void setName(String fighterName) {
+    public void setName(String fighterName) {
 
         this.name = fighterName;
     }
 
 
-    String getName() {
+    public String getName() {
 
         return name;
     }
 
     /************************************/
 
-    void setType(String fighterType) {
+    public void setType(String fighterType) {
 
         this.type = fighterType;
     }
 
-    String getType() {
+    public String getType() {
 
         return type;
     }
@@ -44,11 +46,11 @@ public abstract class Fighter {
 
     public abstract Stuff getSecondary();
 
-    abstract void setLife(int fighterLife);
+    public abstract void setLife(int fighterLife);
 
-    abstract int getLife();
+    public abstract int getLife();
 
-    abstract void setPower(int fighterPower);
+    public abstract void setPower(int fighterPower);
 
-    abstract int getPower();
+    public abstract int getPower();
 }

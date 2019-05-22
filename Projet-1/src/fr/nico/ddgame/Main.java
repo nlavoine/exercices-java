@@ -1,4 +1,4 @@
-package main.java;
+package fr.nico.ddgame;
 
 /**
  * @author nicolas
