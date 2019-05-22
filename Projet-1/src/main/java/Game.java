@@ -79,16 +79,20 @@ class Game {
      * Display game title
      */
     private void printTitle() {
-        System.out.println("||======================================================================================================||");
-        System.out.println("||                                                                                                      ||");
-        System.out.println("||      ██▄     ▄      ▄     ▄▀  ▄███▄   ████▄    ▄           ██▄   █▄▄▄▄ ██     ▄▀  ████▄    ▄         ||");
-        System.out.println("||      █  █     █      █  ▄▀    █▀   ▀  █   █     █          █  █  █  ▄▀ █ █  ▄▀    █   █     █        ||");
-        System.out.println("||      █   █ █   █ ██   █ █ ▀▄  ██▄▄    █   █ ██   █         █   █ █▀▀▌  █▄▄█ █ ▀▄  █   █ ██   █       ||");
-        System.out.println("||      █  █  █   █ █ █  █ █   █ █▄   ▄▀ ▀████ █ █  █         █  █  █  █  █  █ █   █ ▀████ █ █  █       ||");
-        System.out.println("||      ███▀  █▄ ▄█ █  █ █  ███  ▀███▀         █  █ █    &    ███▀    █      █  ███        █  █ █       ||");
-        System.out.println("||             ▀▀▀  █   ██                     █   ██                ▀      █              █   ██       ||");
-        System.out.println("||                                                                         ▀                            ||");
-        System.out.println("||======================================================================================================||");
+        System.out.println("                                                ⎛⎝_____⎠⎞                                                   ");
+        System.out.println("                                                ⎝       ⎠                                                   ");
+        System.out.println("                                                ⎛('⎝ ⎠')⎞                                                   ");
+        System.out.println("❨◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜❩");
+        System.out.println(" ❩                                                                                                      ❨");
+        System.out.println("❨       ██▄     ▄      ▄     ▄▀  ▄███▄   ████▄    ▄           ██▄   █▄▄▄▄ ██     ▄▀  ████▄    ▄          ❩");
+        System.out.println(" ❩      █  █     █      █  ▄▀    █▀   ▀  █   █     █          █  █  █  ▄▀ █ █  ▄▀    █   █     █        ❨");
+        System.out.println("❨       █   █ █   █ ██   █ █ ▀▄  ██▄▄    █   █ ██   █         █   █ █▀▀▌  █▄▄█ █ ▀▄  █   █ ██   █        ❩");
+        System.out.println(" ❩      █  █  █   █ █ █  █ █   █ █▄   ▄▀ ▀████ █ █  █         █  █  █  █  █  █ █   █ ▀████ █ █  █       ❨");
+        System.out.println("❨       ███▀  █▄ ▄█ █  █ █  ███  ▀███▀         █  █ █    &    ███▀    █      █  ███        █  █ █        ❩");
+        System.out.println(" ❩             ▀▀▀  █   ██                     █   ██                ▀      █              █   ██       ❨");
+        System.out.println("❨                                                                          ▀                             ❩");
+        System.out.println(" ◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜◝◟◞◜");
+        System.out.println("                                                   ⎞⎠⎝⎛                                                   ");
     }
 
 
@@ -223,7 +227,7 @@ class Game {
     private void initOpponents(){
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("┃                       Nombre d'adversaire ?                         ┃");
-        System.out.println("┃");
+        System.out.println("┃                                                                     ┃");
 
         int nbOpponents = Integer.parseInt(sc.nextLine());
         int randType;
@@ -232,7 +236,7 @@ class Game {
             randType = (int)( Math.random()*( (fighters.length-1) + 1 ) );
             fightersList.get("opponents").add(createFighter(randType, opponentsNames[i]));
         }
-        System.out.println("┃ " + nbOpponents + " adversaires créés");
+        System.out.println("┃ " + nbOpponents + " adversaires créés                               ┃");
         System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
         System.out.println(" \n");
     }
@@ -302,17 +306,18 @@ class Game {
         System.out.println("┃                           ATTRIBUTS                                 ┃");
         System.out.println("┃");
         for (Fighter fighter : fightersList.get(team)){
-            System.out.println("Nom : " + fighter.getName());
-            System.out.println("Type : " + fighter.getType());
-            System.out.println("Vie : " + fighter.getLife());
-            System.out.println("Force : " + fighter.getPower());
-            System.out.println("Arme : " + fighter.getStuff().getName() + " - " + fighter.getStuff().getPower());
+            System.out.println("┠─────────────────────────────────────────────────────────────────────┨");
+            System.out.println("┃   Nom : " + fighter.getName());
+            System.out.println("┃   Type : " + fighter.getType());
+            System.out.println("┃   Vie : " + fighter.getLife());
+            System.out.println("┃   Force : " + fighter.getPower());
+            System.out.println("┃   Arme : " + fighter.getStuff().getName() + " - " + fighter.getStuff().getPower());
 
-            String secondaryP1 = fighter.getType().equals(fighters[0]) ? "Bouclier : " : "Philtre : ";
+            String secondaryP1 = fighter.getType().equals(fighters[0]) ? "┃   Bouclier : " : "┃   Philtre : ";
             String secondaryP2=fighter.getSecondary().getName() + " - " + fighter.getSecondary().getPower();
 
             System.out.println(secondaryP1 + secondaryP2);
-            System.out.println("┠─────────────────────────────────────────────────────────────────────┨");
+
         }
         System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
         System.out.println(" \n");
@@ -334,7 +339,7 @@ class Game {
         System.out.println("┃ Quel adverssaire voulez-vous modifier :");
         int index = 0;
         for (Fighter player : fightersList.get(team)){
-            System.out.println("[" + (index+1) + "]" + player.getName());
+            System.out.println("┃   [" + (index+1) + "]" + player.getName());
             index++;
         }
         int selectedPlayer = (Integer.parseInt(sc.nextLine())-1);
@@ -379,13 +384,13 @@ class Game {
         System.out.println("┃");
 
         for (int i = 0; i < stuffList.get(caracter.getType()).size(); i++) {
-            System.out.println("||     [" + (i + 1) + "] " + stuffList.get(caracter.getType()).get(i).getName() + " - " + stuffList.get(caracter.getType()).get(i).getPower());
+            System.out.println("┃      [" + (i + 1) + "] " + stuffList.get(caracter.getType()).get(i).getName() + " - " + stuffList.get(caracter.getType()).get(i).getPower());
         }
 
         caracter.setStuff(weaponList.get(sc.nextInt() - 1));
         sc.nextLine();
 
-        String secondaryP1 = caracter.getType() == fighters[0] ? " ┃ Bouclier de " : "┃ Philtre de ";
+        String secondaryP1 = caracter.getType() == fighters[0] ? "┃ Bouclier de " : "┃ Philtre de ";
         String secondaryP2 = caracter.getName() + " : " + caracter.getSecondary();
         System.out.println(secondaryP1 + secondaryP2);
 
