@@ -4,7 +4,7 @@ package main.java;
 public class Wizard extends Fighter {
 
     private Stuff sort;
-    private String philter;
+    private Stuff philter;
 
     private final static int MIN_LIFE = 3;
     private final static int MAX_LIFE = 6;
@@ -14,12 +14,23 @@ public class Wizard extends Fighter {
     private int life;
     private int power;
 
-    Wizard(Stuff fighterSort, String philter) {
+    Wizard(Stuff fighterSort, Stuff fighterPhilter) {
         setStuff(fighterSort);
-        setSecondary(philter);
-        this.life = generateLife();
+        setSecondary(fighterPhilter);
+        this.life = generateLife()*5;
         this.power = generatePower();
 
+    }
+
+    @Override
+    public int getAttackPower(){
+        double luck = (( Math.random()*( 10 - 5 + 1 ) ) + 5)/10;
+        return (int)((this.power + this.sort.getPower()) * luck);
+    }
+
+    @Override
+    public int getDefensePower(){
+        return this.philter.getPower();
     }
 
     /**
@@ -55,13 +66,13 @@ public class Wizard extends Fighter {
     }
     /************************************/
     @Override
-    public void setSecondary(String fighterPhilter) {
+    public void setSecondary(Stuff fighterPhilter) {
 
         this.philter = fighterPhilter;
     }
 
     @Override
-    public String getSecondary() {
+    public Stuff getSecondary() {
 
         return philter;
     }

@@ -3,11 +3,11 @@ package main.java;
 public class Stuff {
 
     private String name;
-    private int attack;
+    private int power;
 
-    Stuff(String stuffName, int stuffAttack){
+    Stuff(String stuffName, int stuffPower){
         name = stuffName;
-        attack = stuffAttack;
+        power = stuffPower;
     }
 
     /************************************/
@@ -22,11 +22,11 @@ public class Stuff {
     /************************************/
 
     /*void setAttack(int stuffAttack) {
-        this.attack = stuffAttack;
+        this.power = stuffAttack;
     }*/
 
-    int getAttack() {
-        return attack;
+    int getPower() {
+        return power;
     }
 
 

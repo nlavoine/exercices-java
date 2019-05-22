@@ -3,7 +3,7 @@ package main.java;
 public class Warrior extends Fighter {
 
     private Stuff weapon;
-    private String shield;
+    private Stuff shield;
 
     private final static int MIN_LIFE = 5;
     private final static int MAX_LIFE = 10;
@@ -15,13 +15,24 @@ public class Warrior extends Fighter {
 
     /**
      * @param fighterWeapon     Object : "Stuff" du warrior
-     * @param shield            String : "Shield" du warrior
+     * @param fighterShield            String : "Shield" du warrior
      */
-    Warrior(Stuff fighterWeapon, String shield) {
+    Warrior(Stuff fighterWeapon, Stuff fighterShield) {
         setStuff(fighterWeapon);
-        setSecondary(shield);
-        this.life = generateLife();
+        setSecondary(fighterShield);
+        this.life = generateLife()*5;
         this.power = generatePower();
+    }
+
+    @Override
+    public int getAttackPower(){
+        double luck = (( Math.random()*( 10 - 5 + 1 ) ) + 5)/10;
+        return (int)((this.power + this.weapon.getPower()) * luck);
+    }
+
+    @Override
+    public int getDefensePower(){
+        return this.shield.getPower();
     }
 
     /**
@@ -58,13 +69,13 @@ public class Warrior extends Fighter {
 
     /************************************/
     @Override
-    public void setSecondary(String fighterShield) {
+    public void setSecondary(Stuff fighterShield) {
 
         this.shield = fighterShield;
     }
 
     @Override
-    public String getSecondary() {
+    public Stuff getSecondary() {
 
         return shield;
     }

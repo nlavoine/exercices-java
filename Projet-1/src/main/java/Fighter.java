@@ -33,15 +33,16 @@ public abstract class Fighter {
         return type;
     }
 
-
+    public abstract int getAttackPower();
+    public abstract int getDefensePower();
 
     public abstract void setStuff(Stuff fighterStuff);
 
     public abstract Stuff getStuff();
 
-    public abstract void setSecondary(String fighterSecondary);
+    public abstract void setSecondary(Stuff fighterSecondary);
 
-    public abstract String getSecondary();
+    public abstract Stuff getSecondary();
 
     abstract void setLife(int fighterLife);
 

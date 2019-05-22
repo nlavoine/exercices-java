@@ -2,8 +2,8 @@ package main.java;
 
 public class Sort extends Stuff{
 
-    Sort(String weaponName, int weaponAttack){
-        super(weaponName, weaponAttack);
+    Sort(String stuffName, int stuffPower){
+        super(stuffName, stuffPower);
     }
 
 }
