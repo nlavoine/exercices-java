@@ -6,6 +6,7 @@ import fr.nico.ddgame.fighters.Fighter;
 import fr.nico.ddgame.fighters.Warrior;
 import fr.nico.ddgame.fighters.Wizard;
 import fr.nico.ddgame.items.*;
+import fr.nico.ddgame.ui.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +19,7 @@ class Game {
 
     private  Scanner sc = new Scanner(System.in);
     private static final String[] fighters = {"Warrior", "Wizard"};
-    private static final String[] options = {"Afficher les infos des joueurs", "Modifier les infos du personnage","Afficher les infos des adversaires", "Modifier les infos des adversaires", "Combattre !"};
+    private static final String[] options = {"Afficher les joueurs", "Modifier les joueurs","Afficher les adversaires", "Modifier les adversaires", "⚔ Combattre ! ⚔"};
 
     private static final String[] weapons = {"Hache de bucheron", "Tournevis bélliqueux"};
     private static final String[] shields = {"Casque en mousse", "Plastron MDF"};
@@ -180,16 +181,15 @@ class Game {
      * @return integer from user input
      */
     private int askOptionsFighter() {
-        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("┃                    Que souhaitez-vous faire ?                       ┃");
-        System.out.println("┃                    --> Entrer un numéro : ");
+        WindowMenu WinMenu = new WindowMenu();
+        System.out.println(WinMenu.header());
+
         int i = 0;
         for(String option : options){
-            System.out.println("┃                  ["+(i+1)+"] " + option);
+            System.out.println(WinMenu.option(i+1, option));
             i++;
         }
-        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.println(" \n");
+        System.out.println(WinMenu.footer());
 
         return Integer.parseInt(sc.nextLine());
 
@@ -200,28 +200,32 @@ class Game {
      * Initialize players from user inputs (number of players and names)
      */
     private void initPlayers(){
-        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("┃                          Nombre de joueurs ?                        ┃");
-        System.out.println("┠─────────────────────────────────────────────────────────────────────┨");
+
+        WindowInitPlayer WinInitPlayer = new WindowInitPlayer();
+        System.out.println(WinInitPlayer.header());
+
 
         int nbPlayers = Integer.parseInt(sc.nextLine());
 
         for(int i= 0 ; i < nbPlayers; i++){
 
-            System.out.println("┃  Renseigner le nom du combattant " + (i+1) + " ");
+            System.out.println(WinInitPlayer.askPlayerName(i+1));
+
             String fighterName = sc.nextLine();
-            System.out.println("┃ ");
-            System.out.println("┃       Selection du type     ");
-            System.out.println("┃         [1] ⚒ " + fighters[0]);
-            System.out.println("┃         [2] ⚚ " + fighters[1]);
+
+            System.out.println(WinInitPlayer.emptyLine());
+            System.out.println(WinInitPlayer.askPlayerType());
+
+            for(int j = 0; j < fighters.length; j++){
+                System.out.println(WinInitPlayer.typeOptions(j+1, fighters[j]));
+            }
 
             int fighterType = Integer.parseInt(sc.nextLine())-1;
 
             fightersList.get("players").add(createFighter(fighterType, fighterName));
         }
 
-        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.println(" \n");
+        System.out.println(WinInitPlayer.footer());
     }
 
 
@@ -229,20 +233,20 @@ class Game {
      * Initialize opponents from user inputs (number of players. Names are set from array)
      */
     private void initOpponents(){
-        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("┃                       Nombre d'adversaire ?                         ┃");
-        System.out.println("┃                                                                     ┃");
+
+        WindowInitOpponent WinInitOpponent = new WindowInitOpponent();
+        System.out.println(WinInitOpponent.header());
 
         int nbOpponents = Integer.parseInt(sc.nextLine());
         int randType;
+
 
         for(int i= 0 ; i < nbOpponents; i++){
             randType = (int)( Math.random()*( (fighters.length-1) + 1 ) );
             fightersList.get("opponents").add(createFighter(randType, opponentsNames[i]));
         }
-        System.out.println("┃ " + nbOpponents + " adversaires créés                               ┃");
-        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.println(" \n");
+        System.out.println(WinInitOpponent.footer(nbOpponents));
+
     }
 
     /**
@@ -302,33 +306,35 @@ class Game {
 
     /**
      * Display all fighters info for a team
-     * @param team String : which team to display players/opponents
+     * @param team String : which team to UiBox players/opponents
      */
     private void displayFightersList(String team){
 
-        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("┃                           ATTRIBUTS                                 ┃");
-        System.out.println("┃                                                                     ┃");
+        WindowFightersList WinFightersList = new WindowFightersList();
+        System.out.println(WinFightersList.header());
+
+        int index = 0;
         for (Fighter fighter : fightersList.get(team)){
-            System.out.println("┠─────────────────────────────────────────────────────────────────────┨");
-            System.out.println("┃   Nom : " + fighter.getName());
-            System.out.println("┃   Type : " + fighter.getType());
-            System.out.println("┃   Vie : " + fighter.getLife());
-            System.out.println("┃   Force : " + fighter.getPower());
-            System.out.println("┃   Arme : " + fighter.getStuff().getName() + " - " + fighter.getStuff().getPower());
+            System.out.println(WinFightersList.emptyLine());
+            System.out.println(WinFightersList.options("Nom", fighter.getName()));
+            System.out.println(WinFightersList.options("Type", fighter.getType()));
+            System.out.println(WinFightersList.options("Vie", Integer.toString(fighter.getLife())));
+            System.out.println(WinFightersList.options("Force ", Integer.toString(fighter.getPower())));
+            System.out.println(WinFightersList.options("Arme", fighter.getStuff().getName() + " - " + fighter.getStuff().getPower()));
 
-            String secondaryP1 = fighter.getType().equals(fighters[0]) ? "┃   Bouclier : " : "┃   Philtre : ";
-            String secondaryP2=fighter.getSecondary().getName() + " - " + fighter.getSecondary().getPower();
+            String label = fighter.getType().equals(fighters[0]) ? "Bouclier" : "Philtre";
+            String value = fighter.getSecondary().getName() + " [" + fighter.getSecondary().getPower() + "]";
 
-            System.out.println(secondaryP1 + secondaryP2);
+            System.out.println(WinFightersList.options(label, value));
 
+            System.out.println(WinFightersList.emptyLine());
+
+            if(index < (fightersList.size())-1){
+                System.out.println(WinFightersList.filledLine());
+            }
+            index++;
         }
-        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.println(" \n");
-
-
-
-
+        System.out.println(WinFightersList.footer());
     }
 
 
@@ -337,13 +343,12 @@ class Game {
      * @param team String : which team to edit players/opponents
      */
     private void editFighter(String team) {
-        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("┃                          EDITER UN JOUEUR                           ┃");
-        System.out.println("┃");
-        System.out.println("┃ Quel adverssaire voulez-vous modifier :");
+        WindowFighterSelectEdit WinFighterSelectEdit = new WindowFighterSelectEdit();
+        System.out.println(WinFighterSelectEdit.header());
+
         int index = 0;
         for (Fighter player : fightersList.get(team)){
-            System.out.println("┃   [" + (index+1) + "]" + player.getName());
+            System.out.println(WinFighterSelectEdit.options(index+1, player.getName()));
             index++;
         }
         int selectedPlayer = (Integer.parseInt(sc.nextLine())-1);
@@ -355,62 +360,50 @@ class Game {
      * @param caracter Fighter : fighter to be edited
      */
     private void editInfos(Fighter caracter){
-        System.out.println("┠─────────────────────────────────────────────────────────────────────┨");
-        System.out.println("┃                              ATTRIBUTS                              ┃");
-        System.out.println("┃");
-        System.out.println("┃ Le combattant s'appel " + caracter.getName() + ".");
-        System.out.println("┃ **** Renseigner son nouveau nom :");
+
+        WindowFighterEdit WinFighterEdit = new WindowFighterEdit();
+        System.out.println(WinFighterEdit.header(caracter.getName()));
+        System.out.println(WinFighterEdit.contentLine("ATTRIBUTS"));
+
+        System.out.println(WinFighterEdit.askFighterName(caracter.getName()));
 
         caracter.setName(sc.nextLine());
-        System.out.println("┃");
 
-        System.out.println("┃ " + caracter.getName() + " a " + caracter.getLife() + " points de Vie.");
-        System.out.println("┃ **** Renseigner ses points de Vie :");
+        System.out.println(WinFighterEdit.askFighterLife(caracter.getName(), caracter.getLife()));
 
         caracter.setLife(sc.nextInt());
         sc.nextLine();
-        System.out.println("┃");
 
-        System.out.println("┃ " + caracter.getName() + " a " + caracter.getPower() + " points de Force.");
-        System.out.println("┃ **** Renseigner enfin ses points de Force :");
+        System.out.println(WinFighterEdit.askFighterPower(caracter.getName(), caracter.getPower()));
 
         caracter.setPower(sc.nextInt());
         sc.nextLine();
-        System.out.println("┃");
 
-        System.out.println("┃");
-        System.out.println("┃┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┃");
-        System.out.println("┃            EQUIPEMENTS           ||");
-        System.out.println("┃");
+        System.out.println(WinFighterEdit.askFighterPower(caracter.getName(), caracter.getPower()));
 
-        System.out.println("┃ Arme de " + caracter.getName() + " : " + caracter.getStuff().getName());
-        System.out.println("┃ **** Quelle arme souhaitez-vous lui équiper ?");
-        System.out.println("┃");
+        System.out.println(WinFighterEdit.contentLine("EQUIPEMENTS"));
+
+        System.out.println(WinFighterEdit.askFighterStuff(caracter.getName(), caracter.getStuff().getName()));
+
 
         for (int i = 0; i < stuffList.get(caracter.getType()).size(); i++) {
-            System.out.println("┃      [" + (i + 1) + "] " + stuffList.get(caracter.getType()).get(i).getName() + " - " + stuffList.get(caracter.getType()).get(i).getPower());
+            System.out.println(WinFighterEdit.stuffOption(i+1, stuffList.get(caracter.getType()).get(i).getName(),stuffList.get(caracter.getType()).get(i).getPower()));
         }
 
         caracter.setStuff(weaponList.get(sc.nextInt() - 1));
         sc.nextLine();
 
-        String secondaryP1 = caracter.getType() == fighters[0] ? "┃ Bouclier de " : "┃ Philtre de ";
-        String secondaryP2 = caracter.getName() + " : " + caracter.getSecondary();
-        System.out.println(secondaryP1 + secondaryP2);
 
-        System.out.println("┃ **** Quelle équipement secondaire souhaitez-vous lui équiper ?");
-        System.out.println("┃");
+        System.out.println(WinFighterEdit.askFighterStuff(caracter.getName(), caracter.getSecondary().getName()));
+
         for (int i = 0; i < secondaryList.get(caracter.getType()).size(); i++) {
-            System.out.println("┃     [" + (i + 1) + "] " + secondaryList.get(caracter.getType()).get(i).getName() + " - " + secondaryList.get(caracter.getType()).get(i).getPower());
+            System.out.println(WinFighterEdit.stuffOption(i+1, secondaryList.get(caracter.getType()).get(i).getName(),secondaryList.get(caracter.getType()).get(i).getPower()));
         }
 
         caracter.setSecondary(secondaryList.get(caracter.getType()).get(sc.nextInt() - 1));
         sc.nextLine();
 
-        System.out.println("┃");
-        System.out.println("┃   * Mise à jour du Combattant *");
-        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.println(" \n");
+        System.out.println(WinFighterEdit.footer(caracter.getName()));
     }
 
 
