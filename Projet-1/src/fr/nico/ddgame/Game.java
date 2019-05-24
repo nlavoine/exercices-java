@@ -4,14 +4,12 @@ package fr.nico.ddgame;
 //import java.lang.reflect.InvocationTargetException;
 import fr.nico.ddgame.Exceptions.FighterUnknownException;
 import fr.nico.ddgame.fighters.Fighter;
-import fr.nico.ddgame.fighters.Warrior;
-import fr.nico.ddgame.fighters.Wizard;
 import fr.nico.ddgame.items.*;
 import fr.nico.ddgame.ui.*;
-import fr.nico.ddgame.Exceptions.FighterUnknownException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -20,19 +18,19 @@ import java.util.Scanner;
 class Game {
 
     private  Scanner sc = new Scanner(System.in);
-    private static final String[] fighters = {"Warrior", "Wizard"};
-    private static final String[] options = {"Afficher les joueurs", "Modifier les joueurs","Afficher les adversaires", "Modifier les adversaires", "⚔ Combattre ! ⚔"};
+    private static final String[] FIGHTERS = {"Warrior", "Wizard"};
+    private static final String[] OPTIONS = {"Afficher les joueurs", "Modifier les joueurs","Afficher les adversaires", "Modifier les adversaires", "⚔ Combattre ! ⚔"};
 
-    private static final String[] weapons = {"Hache de bucheron", "Tournevis bélliqueux"};
-    private static final String[] shields = {"Casque en mousse", "Plastron MDF"};
-
-
-    private static final String[] sorts = {"Etincelle du marchand", "Souffle fétide"};
-    private static final String[] philters = {"Potion de soin min", "Plume de Phoenix"};
+    private static final String[] WEAPONS = {"Hache de bucheron", "Tournevis bélliqueux"};
+    private static final String[] SHIELDS = {"Casque en mousse", "Plastron MDF"};
 
 
+    private static final String[] SORTS = {"Etincelle du marchand", "Souffle fétide"};
+    private static final String[] PHILTERS = {"Potion de soin min", "Plume de Phoenix"};
 
-    private static final String[] opponentsNames = {"Beus","Dorusmoricu","Eodi","Falem","Hipo","Hontrote","Iaxenteran","Kroneul","Krseta","Krus","Leulaeagore","Lionusury","Maise","Mpynasytei","Thaeg","Tussiare","Visiteres","Visust","Viusopel","Xemel"};
+
+
+    private static final String[] OPPONENTS_NAMES = {"Beus","Dorusmoricu","Eodi","Falem","Hipo","Hontrote","Iaxenteran","Kroneul","Krseta","Krus","Leulaeagore","Lionusury","Maise","Mpynasytei","Thaeg","Tussiare","Visiteres","Visust","Viusopel","Xemel"};
 
 
     private static ArrayList<Stuff> weaponList = new ArrayList<>();
@@ -48,6 +46,9 @@ class Game {
     private static HashMap<String, ArrayList<Stuff>> secondaryList = new HashMap<>();
     private static HashMap<String, ArrayList<Fighter>> fightersList = new HashMap<>();
 
+    private static final int TOTAL_TILES = 15;
+    private static final String[] TILES = {"Ennemy", "Food"};
+    private static final List<String> board = new ArrayList<>();
 
     /**
      * Init game lists
@@ -70,6 +71,7 @@ class Game {
      */
     void play(){
         printTitle();
+        initBoard();
         initWeapons();
         initSorts();
         initShields();
@@ -102,13 +104,24 @@ class Game {
         System.out.println("                                                                                                          ");
     }
 
+    /**
+     * Create set of TILES
+     */
+    private void initBoard(){
+        for(int i = 0; i<Game.TOTAL_TILES; i++){
+            int randTileType = ((int)( Math.random()*( (Game.TILES.length-1) + 1 ) ));
+            Game.board.add(Game.TILES[randTileType]);
+            System.out.println("Case N°" + i + " + " + Game.board.get(i));
+        }
+    }
+
 
     /**
-     * Create weapons collection from array
+     * Create WEAPONS collection from array
      */
     private void initWeapons(){
 
-        for(String weaponName : weapons){
+        for(String weaponName : WEAPONS){
             int weaponPower = ((int)( Math.random()*( 10 - 3 + 1 ) ) + 3);
             weaponList.add(new Weapon(weaponName, weaponPower));
         }
@@ -116,33 +129,33 @@ class Game {
     }
 
     /**
-     * Create sorts collection from array
+     * Create SORTS collection from array
      */
     private void initSorts(){
 
-        for(String sortName : sorts){
+        for(String sortName : SORTS){
             int sortPower = (int)(( Math.random()*( 8 - 5 + 1 ) )+ 5);
             sortList.add(new Sort(sortName, sortPower));
         }
     }
 
     /**
-     * Create shields collection from array
+     * Create SHIELDS collection from array
      */
     private void initShields(){
 
-        for(String shieldName : shields){
+        for(String shieldName : SHIELDS){
             int shieldPower = (int)(( Math.random()*( 8 - 5 + 1 ) )+ 5);
             shieldList.add(new Shield(shieldName, shieldPower));
         }
     }
 
     /**
-     * Create shields collection from array
+     * Create SHIELDS collection from array
      */
     private void initPhilters(){
 
-        for(String philterName : philters){
+        for(String philterName : PHILTERS){
             int philterPower = (int)(( Math.random()*( 10 - 3 + 1 ) )+ 3);
             philterList.add(new Philter(philterName , philterPower));
         }
@@ -187,7 +200,7 @@ class Game {
         System.out.println(WinMenu.header());
 
         int i = 0;
-        for(String option : options){
+        for(String option : OPTIONS){
             System.out.println(WinMenu.option(i+1, option));
             i++;
         }
@@ -218,8 +231,8 @@ class Game {
             System.out.println(WinInitPlayer.emptyLine());
             System.out.println(WinInitPlayer.askPlayerType());
 
-            for(int j = 0; j < fighters.length; j++){
-                System.out.println(WinInitPlayer.typeOptions(j+1, fighters[j]));
+            for(int j = 0; j < FIGHTERS.length; j++){
+                System.out.println(WinInitPlayer.typeOptions(j+1, FIGHTERS[j]));
             }
 
             int fighterType = Integer.parseInt(sc.nextLine())-1;
@@ -249,9 +262,9 @@ class Game {
 
 
         for(int i= 0 ; i < nbOpponents; i++){
-            randType = (int)( Math.random()*( (fighters.length-1) + 1 ) );
+            randType = (int)( Math.random()*( (FIGHTERS.length-1) + 1 ) );
             try {
-                fightersList.get("opponents").add(createFighter(randType, opponentsNames[i]));
+                fightersList.get("opponents").add(createFighter(randType, OPPONENTS_NAMES[i]));
             } catch (FighterUnknownException e) {
                 e.printStackTrace();
             }
@@ -266,10 +279,10 @@ class Game {
      * @return Fighter fighter : the object fighter created
      */
     private Fighter createFighter(int fighterNumber, String fighterName ) throws FighterUnknownException {
-        //Fighter fighter = null;
+
         String fighterType = null;
         try {
-            fighterType = fighters[fighterNumber];
+            fighterType = FIGHTERS[fighterNumber];
         } catch (Exception e) {
             //e.printStackTrace();
             throw new FighterUnknownException("Fighter number "+ fighterNumber +" unknown");
@@ -279,7 +292,7 @@ class Game {
         int randStuff = (int)( Math.random()*( (stuffList.get(fighterType).size()-1) + 1 ) );
         int randSecondary = (int)( Math.random()*( (secondaryList.get(fighterType).size()-1) + 1 ) );
 
-        String fullPath = "fr.nico.ddgame.fighters."+fighterType;
+        String fullPath = "fr.nico.ddgame.FIGHTERS."+fighterType;
         Fighter fighter = null;
         try {
             Class<?> clazz = Class.forName(fullPath);
@@ -291,7 +304,7 @@ class Game {
         fighter.setStuff(stuffList.get(fighterType).get(randStuff));
         fighter.setSecondary(secondaryList.get(fighterType).get(randSecondary));
         fighter.setName(fighterName);
-        fighter.setType(fighters[fighterNumber]);
+        fighter.setType(FIGHTERS[fighterNumber]);
         return fighter;
     }
 
@@ -305,7 +318,7 @@ class Game {
     // eye : ☉
 
     /**
-     * Display all fighters info for a team
+     * Display all FIGHTERS info for a team
      * @param team String : which team to UiBox players/opponents
      */
     private void displayFightersList(String team){
@@ -322,7 +335,7 @@ class Game {
             System.out.println(WinFightersList.options("Force ", Integer.toString(fighter.getPower())));
             System.out.println(WinFightersList.options("Arme", fighter.getStuff().getName() + " [" + fighter.getStuff().getPower() + "]"));
 
-            String label = fighter.getType().equals(fighters[0]) ? "Bouclier" : "Philtre";
+            String label = fighter.getType().equals(FIGHTERS[0]) ? "Bouclier" : "Philtre";
             String value = fighter.getSecondary().getName() + " [" + fighter.getSecondary().getPower() + "]";
 
             System.out.println(WinFightersList.options(label, value));
@@ -339,7 +352,7 @@ class Game {
 
 
     /**
-     * Show all fighters to edit, waiting for the user to pick one
+     * Show all FIGHTERS to edit, waiting for the user to pick one
      * @param team String : which team to edit players/opponents
      */
     private void editFighter(String team) {
