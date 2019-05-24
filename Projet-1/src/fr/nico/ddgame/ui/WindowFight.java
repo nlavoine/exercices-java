@@ -35,7 +35,7 @@ public class WindowFight extends UiBox {
     }
 
     public String opponentOption(int iter, String name, String type, int life, int power, int secondaryPower){
-        String option1 = "[" + iter + "] " + name + "(" + type+ ")";
+        String option1 = "[" + iter + "] " + name + " (" + type+ ")";
         String option2 = "[ Vie : " + life + " ] [  Puissance : " + power + " ] [ Points de défense : " + secondaryPower + " ]";
         String option = generateContentLine("bold", option1, true) + "\n";
         option += generateContentLine("bold", option2, true) + "\n";

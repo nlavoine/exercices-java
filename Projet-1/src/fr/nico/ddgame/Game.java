@@ -266,7 +266,7 @@ class Game {
      * @return Fighter fighter : the object fighter created
      */
     private Fighter createFighter(int fighterNumber, String fighterName ) throws FighterUnknownException {
-        Fighter fighter = null;
+        //Fighter fighter = null;
         String fighterType = null;
         try {
             fighterType = fighters[fighterNumber];
@@ -279,26 +279,14 @@ class Game {
         int randStuff = (int)( Math.random()*( (stuffList.get(fighterType).size()-1) + 1 ) );
         int randSecondary = (int)( Math.random()*( (secondaryList.get(fighterType).size()-1) + 1 ) );
 
-        switch(fighterNumber) {
-            case 0:
-                fighter = new Warrior();
-                break;
-            case 1:
-                fighter = new Wizard();
-                break;
-            default:
-                throw new FighterUnknownException("Fighter number "+ fighterNumber +" unknown");
-        }
-
-        /*String fullPath = "main.java."+fighterType;
+        String fullPath = "fr.nico.ddgame.fighters."+fighterType;
         Fighter fighter = null;
         try {
             Class<?> clazz = Class.forName(fullPath);
-            Constructor<?> constructor = clazz.getConstructor(Stuff.class,String.class);
-            fighter = ((Fighter)constructor.newInstance(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType)[randSecondary]));
+              fighter = ((Fighter)clazz.newInstance());
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
 
         fighter.setStuff(stuffList.get(fighterType).get(randStuff));
         fighter.setSecondary(secondaryList.get(fighterType).get(randSecondary));
@@ -332,7 +320,7 @@ class Game {
             System.out.println(WinFightersList.options("Type", fighter.getType()));
             System.out.println(WinFightersList.options("Vie", Integer.toString(fighter.getLife())));
             System.out.println(WinFightersList.options("Force ", Integer.toString(fighter.getPower())));
-            System.out.println(WinFightersList.options("Arme", fighter.getStuff().getName() + " [ " + fighter.getStuff().getPower() + " ]"));
+            System.out.println(WinFightersList.options("Arme", fighter.getStuff().getName() + " [" + fighter.getStuff().getPower() + "]"));
 
             String label = fighter.getType().equals(fighters[0]) ? "Bouclier" : "Philtre";
             String value = fighter.getSecondary().getName() + " [" + fighter.getSecondary().getPower() + "]";
