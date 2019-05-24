@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="58356835-7f0b-4b4a-9a04-30a34ce5f345" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demenagement/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../demenagement/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.class" beforeDir="false" afterPath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.java" afterDir="false" />
@@ -30,8 +28,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Game.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="280" selection-start-line="280" selection-end-line="280" />
+                <state relative-caret-position="499">
+                  <caret line="297" column="15" lean-forward="true" selection-start-line="297" selection-start-column="15" selection-end-line="297" selection-end-column="15" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -271,12 +269,12 @@
       <workItem from="1558420580420" duration="23638000" />
       <workItem from="1558505742998" duration="24446000" />
       <workItem from="1558592983604" duration="22677000" />
-      <workItem from="1558679827217" duration="10754000" />
+      <workItem from="1558679827217" duration="11417000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129671000" />
+    <option name="totallyTimeSpent" value="130334000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -291,7 +289,7 @@
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945474" visible="true" weight="0.14775872" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945474" visible="true" weight="0.14775872" />
       <window_info id="Designer" order="1" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -305,7 +303,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293348" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.20174482" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.20174482" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.25299892" />
@@ -595,8 +593,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="280" selection-start-line="280" selection-end-line="280" />
+        <state relative-caret-position="499">
+          <caret line="297" column="15" lean-forward="true" selection-start-line="297" selection-start-column="15" selection-end-line="297" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
