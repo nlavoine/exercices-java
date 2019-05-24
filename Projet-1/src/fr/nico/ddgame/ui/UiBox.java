@@ -8,6 +8,7 @@ public class UiBox {
     private static HashMap<String, String> medium;
     private static HashMap<String, String> slim;
     private static HashMap<String, String> dotted;
+    private static HashMap<String, String> dottedBold;
     private static HashMap<String, String> bold;
     private static HashMap<String, String> doubled;
     private static HashMap<String, HashMap<String, String>> listSymbols;
@@ -32,6 +33,11 @@ public class UiBox {
         dotted.put("right", "┨");
         dotted.put("middle", "┈");
 
+        dottedBold = new HashMap<>();
+        dottedBold.put("left", "▌");
+        dottedBold.put("right", "▌");
+        dottedBold.put("middle", "┈");
+
         bold = new HashMap<>();
         bold.put("topLeft", "▛");
         bold.put("topRight", "▜");
@@ -54,6 +60,7 @@ public class UiBox {
         listSymbols.put("medium", medium);
         listSymbols.put("slim", slim);
         listSymbols.put("dotted", dotted);
+        listSymbols.put("dottedBold", dottedBold);
         listSymbols.put("bold", bold);
         listSymbols.put("doubled", doubled);
     }

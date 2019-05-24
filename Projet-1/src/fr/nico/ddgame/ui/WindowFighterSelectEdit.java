@@ -15,6 +15,11 @@ public class WindowFighterSelectEdit extends UiBox {
         option = generateContentLine("medium", option, true);
         return option;
     }
+    public String footer(){
+        String footer = generateLowerLine("medium")+"\n";
+        footer += "\n";
+        return footer;
+    }
 
 
 }

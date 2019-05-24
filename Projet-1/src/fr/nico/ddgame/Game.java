@@ -320,7 +320,7 @@ class Game {
             System.out.println(WinFightersList.options("Type", fighter.getType()));
             System.out.println(WinFightersList.options("Vie", Integer.toString(fighter.getLife())));
             System.out.println(WinFightersList.options("Force ", Integer.toString(fighter.getPower())));
-            System.out.println(WinFightersList.options("Arme", fighter.getStuff().getName() + " - " + fighter.getStuff().getPower()));
+            System.out.println(WinFightersList.options("Arme", fighter.getStuff().getName() + " [ " + fighter.getStuff().getPower() + " ]"));
 
             String label = fighter.getType().equals(fighters[0]) ? "Bouclier" : "Philtre";
             String value = fighter.getSecondary().getName() + " [" + fighter.getSecondary().getPower() + "]";
@@ -352,7 +352,9 @@ class Game {
             index++;
         }
         int selectedPlayer = (Integer.parseInt(sc.nextLine())-1);
+        System.out.println(WinFighterSelectEdit.footer());
         editInfos(playerList.get(selectedPlayer));
+
     }
 
     /**
@@ -379,7 +381,6 @@ class Game {
         caracter.setPower(sc.nextInt());
         sc.nextLine();
 
-        System.out.println(WinFighterEdit.askFighterPower(caracter.getName(), caracter.getPower()));
 
         System.out.println(WinFighterEdit.contentLine("EQUIPEMENTS"));
 
@@ -413,25 +414,24 @@ class Game {
         boolean doFight = true;
         int round = 1;
 
-        System.out.println("▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜");
-        System.out.println("▌                           DEBUT DU COMBAT                           ▐");
-        System.out.println("▌");
+        WindowFight WinFight = new WindowFight();
+
+        System.out.println(WinFight.header());
 
         while (doFight){
-            System.out.println("▌                          [[ Round " + round + " ]]");
-            System.out.println("▌");
+            System.out.println(WinFight.displayRound(round));
+
             for (Fighter player : fightersList.get("players")){
                 if(fightersList.get("opponents").size()>0) {
-                    System.out.println("▌");
-                    System.out.println("▌                         ==[ A " + player.getName() + " de jouer ! ]==");
-                    System.out.println("▌                         **** Choissez un adversaire :");
-                    System.out.println("▌");
+                    System.out.println(WinFight.playerTurn(player.getName()));
+                    System.out.println(WinFight.opponentQuestion());
+
 
                     int indexOpponents = 1;
                     for (Fighter opponent : fightersList.get("opponents")) {
-                        System.out.println("▌   [" + indexOpponents + "] " + opponent.getName() + "  (" + opponent.getType() + ")");
-                        System.out.println("▌   [ Vie : " + opponent.getLife() + " ] [  Puissance : " + opponent.getPower() + " ] [ Points de défense : " + opponent.getSecondary().getPower() + " ]");
-                        System.out.println("▌");
+
+                        System.out.println(WinFight.opponentOption(indexOpponents, opponent.getName(), opponent.getType(), opponent.getLife(), opponent.getPower(), opponent.getSecondary().getPower()));
+
                         indexOpponents++;
                     }
 
@@ -440,65 +440,47 @@ class Game {
 
                     doAttack(player, targetOpponent, "players");
                 }
-                System.out.println("▌");
-                System.out.println("▌┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▌");
-                System.out.println("▌");
+
+                System.out.println(WinFight.separateFights());
+
             }
 
             if(fightersList.get("opponents").size()>0){
                 for(Fighter opponent : fightersList.get("opponents")){
                     if(fightersList.get("players").size()>0) {
-                        System.out.println("▌ (press enter to continue)");
+                        System.out.println(WinFight.pressEnter());
                         sc.nextLine();
-                        System.out.println("▌                         ==[ A " + opponent.getName() + " de jouer ! ]==");
+                        System.out.println(WinFight.playerTurn(opponent.getName()));
                         int randPlayer = (int) (Math.random() * ((fightersList.get("players").size() - 1) + 1));
                         Fighter targetPlayer = fightersList.get("players").get(randPlayer);
-                        System.out.println("▌   " + opponent.getName() + " attaque " + targetPlayer.getName());
+                        System.out.println(WinFight.opponentAttack(opponent.getName(), targetPlayer.getName()));
 
                         doAttack(opponent, targetPlayer, "opponents");
                     }
-                    System.out.println("▌");
-                    System.out.println("▌┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▌");
-                    System.out.println("▌");
+                    System.out.println(WinFight.separateFights());
                 }//ENDFOR opponents in opponentList
             }//ENDIF opponentList > 0
 
             if(fightersList.get("opponents").size()== 0){
-                System.out.println("▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟");
-                System.out.println(" ");
-                System.out.println(" ");
-                System.out.println("╔═════════════════════════════════════════════════════════════════════╗");
-                System.out.println("║                                                                     ║");
-                System.out.println("║               BRAVO, les ennemis ont tous été vaincus               ║");
-                System.out.println("║                             FIN DU COMBAT                           ║");
-                System.out.println("║                                                                     ║");
-                System.out.println("╚═════════════════════════════════════════════════════════════════════╝");
+                System.out.println(WinFight.footer());
+                System.out.println(WinFight.finalWindows("BRAVO, les ennemis ont tous été vaincus."));
                 doFight = false;
 
             }else if(fightersList.get("players").size()== 0){
-                System.out.println("▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟");
-                System.out.println(" ");
-                System.out.println(" ");
-                System.out.println("╔═════════════════════════════════════════════════════════════════════╗");
-                System.out.println("║                                                                     ║");
-                System.out.println("║               Dommage, les ennemis vous ont éliminé                 ║");
-                System.out.println("║                             FIN DU COMBAT                           ║");
-                System.out.println("║                                                                     ║");
-                System.out.println("╚═════════════════════════════════════════════════════════════════════╝");
+                System.out.println(WinFight.footer());
+                System.out.println(WinFight.finalWindows("Dommage, les ennemis vous ont éliminé."));
+
                 doFight = false;
             }else{
                 round++;
-                System.out.println("▌");
-                System.out.println("▌");
-                System.out.println("▌┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▌");
+                System.out.println(WinFight.separateFights());
                 for (Fighter player : fightersList.get("players")){
-                    System.out.println("▌   ||  " + player.getName() + " ❤️ "+ player.getLife()+"");
+                    System.out.println(WinFight.showLife(player.getName(), player.getLife()));
                 }
                 for (Fighter opponent : fightersList.get("opponents")){
-                    System.out.println("▌   ||  " + opponent.getName() + " ❤️ "+ opponent.getLife()+"");
+                    System.out.println(WinFight.showLife(opponent.getName(), opponent.getLife()));
                 }
-                System.out.println("▌┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▌");
-                System.out.println("▌");
+                System.out.println(WinFight.separateFights());
             }
         }//ENDWHILE
         showOptions();
@@ -506,25 +488,26 @@ class Game {
 
     private void doAttack(Fighter offenseFighter, Fighter defenseFighter, String team){
         int offenseFighterAttack = offenseFighter.getAttackPower();
-        System.out.println("▌   " + offenseFighter.getName() + " attaque avec " + offenseFighter.getStuff().getName() + ". || Puissance d'attaque : " + offenseFighterAttack);
+        WindowFight WinDoAttack = new WindowFight();
+        System.out.println(WinDoAttack.attackStep1(offenseFighter.getName(), offenseFighter.getStuff().getName(), offenseFighterAttack));
 
         int defenseFighterDefense = defenseFighter.getDefensePower();
-        System.out.println("▌   " + defenseFighter.getName() + " se défend avec " + defenseFighter.getSecondary().getName() + ". || Puissance de défense : " + defenseFighterDefense);
+
+        System.out.println(WinDoAttack.attackStep2(defenseFighter.getName(), defenseFighter.getSecondary().getName(), defenseFighterDefense));
 
         if (offenseFighterAttack <= defenseFighterDefense) {
-            System.out.println("▌   " + defenseFighter.getName() + " a paré le coup. Echec de l'attaque");
+            System.out.println(WinDoAttack.attackFailed(defenseFighter.getName()));
         } else {
 
             int damages = offenseFighterAttack - defenseFighterDefense;
             defenseFighter.setLife(defenseFighter.getLife() - damages);
-
-            System.out.println("▌   " + offenseFighter.getName() + " a touché " + defenseFighter.getName());
+            System.out.println(WinDoAttack.attackSuccess(offenseFighter.getName(),defenseFighter.getName()));
 
             if (defenseFighter.getLife() <= 0) {
                 fightersList.get(team).remove(defenseFighter);
-                System.out.println("▌   " + defenseFighter.getName() + " a été vaincu");
+                System.out.println(WinDoAttack.fighterDied(defenseFighter.getName()));
             }else{
-                System.out.println("▌   " + defenseFighter.getName() + " a perdu " + damages + " points de vie. \u2764 " + defenseFighter.getLife());
+                System.out.println(WinDoAttack.fighterRemainingPoints(defenseFighter.getName(), damages, defenseFighter.getLife()));
             }
         }
     }
