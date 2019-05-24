@@ -5,12 +5,7 @@ package main.java;
 public class DoMoves {
 
 
-
-
-
-
-    //Constantes
-    //int nbCar = 250;
+    //Vars
     private int capaCam1 = 5;
     private int capaCam2 = 7;
     private int capaCam3 = 9;
@@ -22,6 +17,7 @@ public class DoMoves {
     int DoMove(String cart) {
 
         int nbCar = Integer.parseInt(cart);
+
         //Boucle du déménagement : "Tant qu'il reste des cartons"
         while (nbCar > 0) {
             a = nbCar;
