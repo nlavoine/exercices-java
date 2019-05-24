@@ -2,11 +2,13 @@ package fr.nico.ddgame;
 
 //import java.lang.reflect.Constructor;
 //import java.lang.reflect.InvocationTargetException;
+import fr.nico.ddgame.Exceptions.FighterUnknownException;
 import fr.nico.ddgame.fighters.Fighter;
 import fr.nico.ddgame.fighters.Warrior;
 import fr.nico.ddgame.fighters.Wizard;
 import fr.nico.ddgame.items.*;
 import fr.nico.ddgame.ui.*;
+import fr.nico.ddgame.Exceptions.FighterUnknownException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -222,7 +224,12 @@ class Game {
 
             int fighterType = Integer.parseInt(sc.nextLine())-1;
 
-            fightersList.get("players").add(createFighter(fighterType, fighterName));
+            try {
+                fightersList.get("players").add(createFighter(fighterType, fighterName));
+            } catch (FighterUnknownException e) {
+                e.printStackTrace();
+                askOptionsFighter();
+            }
         }
 
         System.out.println(WinInitPlayer.footer());
@@ -243,7 +250,11 @@ class Game {
 
         for(int i= 0 ; i < nbOpponents; i++){
             randType = (int)( Math.random()*( (fighters.length-1) + 1 ) );
-            fightersList.get("opponents").add(createFighter(randType, opponentsNames[i]));
+            try {
+                fightersList.get("opponents").add(createFighter(randType, opponentsNames[i]));
+            } catch (FighterUnknownException e) {
+                e.printStackTrace();
+            }
         }
         System.out.println(WinInitOpponent.footer(nbOpponents));
 
@@ -254,22 +265,29 @@ class Game {
      * @param fighterName String : fighter's name
      * @return Fighter fighter : the object fighter created
      */
-    private Fighter createFighter(int fighterNumber, String fighterName ) {
-        Fighter fighter;
-        String fighterType = fighters[fighterNumber];
+    private Fighter createFighter(int fighterNumber, String fighterName ) throws FighterUnknownException {
+        Fighter fighter = null;
+        String fighterType = null;
+        try {
+            fighterType = fighters[fighterNumber];
+        } catch (Exception e) {
+            //e.printStackTrace();
+            throw new FighterUnknownException("Fighter number "+ fighterNumber +" unknown");
+
+        }
 
         int randStuff = (int)( Math.random()*( (stuffList.get(fighterType).size()-1) + 1 ) );
         int randSecondary = (int)( Math.random()*( (secondaryList.get(fighterType).size()-1) + 1 ) );
 
         switch(fighterNumber) {
             case 0:
-                fighter = new Warrior(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType).get(randSecondary));
+                fighter = new Warrior();
                 break;
             case 1:
-                fighter = new Wizard(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType).get(randSecondary));
+                fighter = new Wizard();
                 break;
             default:
-                fighter = null;
+                throw new FighterUnknownException("Fighter number "+ fighterNumber +" unknown");
         }
 
         /*String fullPath = "main.java."+fighterType;
@@ -278,18 +296,12 @@ class Game {
             Class<?> clazz = Class.forName(fullPath);
             Constructor<?> constructor = clazz.getConstructor(Stuff.class,String.class);
             fighter = ((Fighter)constructor.newInstance(stuffList.get(fighterType).get(randStuff), secondaryList.get(fighterType)[randSecondary]));
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }*/
 
+        fighter.setStuff(stuffList.get(fighterType).get(randStuff));
+        fighter.setSecondary(secondaryList.get(fighterType).get(randSecondary));
         fighter.setName(fighterName);
         fighter.setType(fighters[fighterNumber]);
         return fighter;
@@ -422,7 +434,7 @@ class Game {
             System.out.println(WinFight.displayRound(round));
 
             for (Fighter player : fightersList.get("players")){
-                if(fightersList.get("opponents").size()>0) {
+                if(!fightersList.get("opponents").isEmpty()) {
                     System.out.println(WinFight.playerTurn(player.getName()));
                     System.out.println(WinFight.opponentQuestion());
 
@@ -438,7 +450,7 @@ class Game {
                     int selectedOpponent = (Integer.parseInt(sc.nextLine())-1);
                     Fighter targetOpponent = fightersList.get("opponents").get(selectedOpponent);
 
-                    doAttack(player, targetOpponent, "players");
+                    doAttack(player, targetOpponent, "opponents");
                 }
 
                 System.out.println(WinFight.separateFights());
@@ -446,6 +458,7 @@ class Game {
             }
 
             if(fightersList.get("opponents").size()>0){
+                //for(Iterator it = fightersList.get("opponents").iterator(); it.hasNext(); )
                 for(Fighter opponent : fightersList.get("opponents")){
                     if(fightersList.get("players").size()>0) {
                         System.out.println(WinFight.pressEnter());
@@ -455,7 +468,7 @@ class Game {
                         Fighter targetPlayer = fightersList.get("players").get(randPlayer);
                         System.out.println(WinFight.opponentAttack(opponent.getName(), targetPlayer.getName()));
 
-                        doAttack(opponent, targetPlayer, "opponents");
+                        doAttack(opponent, targetPlayer, "players");
                     }
                     System.out.println(WinFight.separateFights());
                 }//ENDFOR opponents in opponentList
@@ -502,7 +515,6 @@ class Game {
             int damages = offenseFighterAttack - defenseFighterDefense;
             defenseFighter.setLife(defenseFighter.getLife() - damages);
             System.out.println(WinDoAttack.attackSuccess(offenseFighter.getName(),defenseFighter.getName()));
-
             if (defenseFighter.getLife() <= 0) {
                 fightersList.get(team).remove(defenseFighter);
                 System.out.println(WinDoAttack.fighterDied(defenseFighter.getName()));

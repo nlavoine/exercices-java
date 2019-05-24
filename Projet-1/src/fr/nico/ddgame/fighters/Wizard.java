@@ -16,12 +16,9 @@ public class Wizard extends Fighter {
     private int life;
     private int power;
 
-    public Wizard(Stuff fighterSort, Stuff fighterPhilter) {
-        setStuff(fighterSort);
-        setSecondary(fighterPhilter);
+    public Wizard() {
         this.life = generateLife()*5;
         this.power = generatePower();
-
     }
 
     @Override

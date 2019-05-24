@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58356835-7f0b-4b4a-9a04-30a34ce5f345" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/Exceptions/FighterUnknownException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/fighters/Warrior.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/fighters/Warrior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/fighters/Wizard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/fighters/Wizard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/ui/UiBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/ui/UiBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/ui/WindowFight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/ui/WindowFight.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/UiBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/UiBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterEdit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterSelectEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterSelectEdit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demenagement/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../demenagement/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.class" beforeDir="false" afterPath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demenagement/src/main/java/DoMoves.java" afterDir="false" />
@@ -28,14 +34,14 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.561039">
+    <splitter split-orientation="horizontal" split-proportion="0.33441558">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Game.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="308">
-                  <caret line="477" column="47" lean-forward="true" selection-start-line="477" selection-start-column="47" selection-end-line="477" selection-end-column="47" />
+                <state relative-caret-position="6">
+                  <caret line="314" column="13" lean-forward="true" selection-start-line="314" selection-start-column="13" selection-end-line="314" selection-end-column="13" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -46,35 +52,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFight.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterEdit.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterSelectEdit.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFightersList.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+                <state relative-caret-position="86">
+                  <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
                 </state>
               </provider>
             </entry>
@@ -86,8 +65,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/UiBox.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+                <state relative-caret-position="508">
+                  <caret line="129" column="62" lean-forward="true" selection-start-line="129" selection-start-column="62" selection-end-line="129" selection-end-column="62" />
                 </state>
               </provider>
             </entry>
@@ -115,6 +94,9 @@
       <find>static</find>
       <find>pars</find>
       <find>showl</find>
+      <find>fighterRemainingPoints</find>
+      <find>generateUpperLine</find>
+      <find>doAttack</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,8 +125,6 @@
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/items/Sort.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/items/Weapon.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Fighter.java" />
-        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java" />
-        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/display.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/box.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowInitOpponent.java" />
@@ -152,9 +132,14 @@
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowMenu.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFightersList.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterSelectEdit.java" />
-        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/UiBox.java" />
-        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/Game.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterEdit.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/Exceptions/UnknownFighterException.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/Exceptions/FighterException.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/Game.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/UiBox.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/Exceptions/FighterUnknownException.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFight.java" />
       </list>
     </option>
@@ -201,6 +186,13 @@
               <item name="Projet-1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ddgame" type="462c0819:PsiDirectoryNode" />
+              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet 1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet-1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ddgame" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -221,6 +213,11 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="fr.nico.ddgame.Exceptions" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -275,12 +272,12 @@
       <workItem from="1558420580420" duration="23638000" />
       <workItem from="1558505742998" duration="24446000" />
       <workItem from="1558592983604" duration="22677000" />
-      <workItem from="1558679827217" duration="4926000" />
+      <workItem from="1558679827217" duration="10190000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123843000" />
+    <option name="totallyTimeSpent" value="129107000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -295,12 +292,12 @@
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14775872" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945474" visible="true" weight="0.14775872" />
+      <window_info id="Designer" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Structure" order="5" sideWeight="0.50054526" side_tool="true" weight="0.14775872" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3140676" />
@@ -309,13 +306,13 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293348" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.032715376" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.20174482" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.25299892" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Run Dashboard" order="13" weight="0.9422028" />
+      <window_info anchor="bottom" id="Run Dashboard" order="13" weight="0.9225736" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -327,12 +324,12 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14609851" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945474" visible="true" weight="0.14775872" />
+      <window_info id="Designer" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Structure" order="5" sideWeight="0.50054526" side_tool="true" weight="0.14775872" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3140676" />
@@ -341,13 +338,13 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293348" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.17775354" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.20174482" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.2868048" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.25299892" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="13" visible="true" weight="0.9422028" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="13" visible="true" weight="0.9225736" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -460,13 +457,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/items/Philter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -499,20 +489,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Fighter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -551,41 +527,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/UiBox.java">
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/util/ArrayList.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+        <state relative-caret-position="431">
+          <caret line="240" column="31" selection-start-line="240" selection-start-column="20" selection-end-line="240" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterSelectEdit.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        <state relative-caret-position="242">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Fighter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Exceptions/FighterUnknownException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#139#140#0" expanded="true" />
+            <element signature="e#163#164#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterEdit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        <state relative-caret-position="306">
+          <caret line="41" column="64" lean-forward="true" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterSelectEdit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="477" column="47" lean-forward="true" selection-start-line="477" selection-start-column="47" selection-end-line="477" selection-end-column="47" />
+        <state relative-caret-position="6">
+          <caret line="314" column="13" lean-forward="true" selection-start-line="314" selection-start-column="13" selection-end-line="314" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/UiBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="129" column="62" lean-forward="true" selection-start-line="129" selection-start-column="62" selection-end-line="129" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFight.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
+        <state relative-caret-position="86">
+          <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
         </state>
       </provider>
     </entry>

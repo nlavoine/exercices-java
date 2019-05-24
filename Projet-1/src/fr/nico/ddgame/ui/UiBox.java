@@ -35,7 +35,7 @@ public class UiBox {
 
         dottedBold = new HashMap<>();
         dottedBold.put("left", "▌");
-        dottedBold.put("right", "▌");
+        dottedBold.put("right", "▐");
         dottedBold.put("middle", "┈");
 
         bold = new HashMap<>();
@@ -45,7 +45,7 @@ public class UiBox {
         bold.put("bottomRight", "▟");
         bold.put("middle", "▀");
         bold.put("left", "▌");
-        bold.put("right", "▌");
+        bold.put("right", "▐");
 
         doubled = new HashMap<>();
         doubled.put("topLeft", "╔");
@@ -53,7 +53,7 @@ public class UiBox {
         doubled.put("bottomLeft", "╚");
         doubled.put("bottomRight", "╝");
         doubled.put("middle", "═");
-        doubled.put("side", "║");
+        doubled.put("left", "║");
         doubled.put("right", "║");
 
         listSymbols = new HashMap<>();
@@ -104,7 +104,7 @@ public class UiBox {
         int spaceLeft;
         int spaceRight;
         if(aligned){
-            spaceLeft = (int)Math.floor(windowWidth/2.5);
+            spaceLeft = (int)Math.floor(windowWidth/2.5)-10;
             //spaceLeft = (int) (Math.floor((halfSpace/10))*10);
             spaceRight = (int)spaceToGenerate - spaceLeft;
         }else {

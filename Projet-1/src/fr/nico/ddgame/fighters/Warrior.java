@@ -19,9 +19,7 @@ public class Warrior extends Fighter {
      * @param fighterWeapon     Object : "Stuff" du warrior
      * @param fighterShield            String : "Shield" du warrior
      */
-    public Warrior(Stuff fighterWeapon, Stuff fighterShield) {
-        setStuff(fighterWeapon);
-        setSecondary(fighterShield);
+    public Warrior() {
         this.life = generateLife()*5;
         this.power = generatePower();
     }

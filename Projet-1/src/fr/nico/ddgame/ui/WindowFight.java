@@ -38,14 +38,14 @@ public class WindowFight extends UiBox {
         String option1 = "[" + iter + "] " + name + "(" + type+ ")";
         String option2 = "[ Vie : " + life + " ] [  Puissance : " + power + " ] [ Points de défense : " + secondaryPower + " ]";
         String option = generateContentLine("bold", option1, true) + "\n";
-        option += generateContentLine("bold", option2, true);
+        option += generateContentLine("bold", option2, true) + "\n";
         option += generateEmptyLine("bold");
 
         return option;
     }
     public String separateFights(){
-        String line = generateEmptyLine("bold");
-        line += generateEmptyLine("dottedBold");
+        String line = generateEmptyLine("bold") + "\n";
+        line += generateFilledLine("dottedBold") + "\n";
         line += generateEmptyLine("bold");
         return line;
     }
@@ -67,47 +67,47 @@ public class WindowFight extends UiBox {
         window += generateEmptyLine("doubled")+"\n";
         window += generateContentLine("doubled", message, false)+"\n";
         window += generateContentLine("doubled", "- FIN DU COMBAT -", false)+"\n";
-        window += generateEmptyLine("doubled")+"\n";
-        window += generateLowerLine("doubled");
+        window += generateEmptyLine("doubled") +"\n";
+        window += generateLowerLine("doubled") + "\n";
         return window;
 
     }
 
     public String showLife(String name, int life){
-        String message = name + " =>  ❤️ " + life;
+        String message = name + " => ️ " + life;
         String line = generateContentLine("bold", message, true);
         return line ;
     }
 
     public String attackStep1(String name, String stuffName, int attackPower){
         String message = name + " attaque avec " + stuffName + ". || Puissance d'attaque : " + attackPower;
-        String line = generateContentLine("bold", message, true);
+        String line = generateContentLine("bold", message, false);
         return line;
     }
     public String attackStep2(String name, String stuffName, int defensePower){
         String message = name + " se défend avec " + stuffName + ". || Puissance de défense: " + defensePower;
-        String line = generateContentLine("bold", message, true);
+        String line = generateContentLine("bold", message, false);
         return line;
     }
 
     public String attackFailed(String name){
         String message = name + " " + WindowFight.ATTACK_RAW;
-        String line = generateContentLine("bold", message, true);
+        String line = generateContentLine("bold", message, false);
         return line;
     }
     public String attackSuccess(String offenseName, String defenseName){
         String message = offenseName + " a attaqué " + defenseName;
-        String line = generateContentLine("bold", message, true);
+        String line = generateContentLine("bold", message, false);
         return line;
     }
     public String fighterDied(String defenseName){
         String message = defenseName + " a été vaincu.";
-        String line = generateContentLine("bold", message, true);
+        String line = generateContentLine("bold", message, false);
         return line;
     }
     public String fighterRemainingPoints(String defenseName, int damage, int life){
         String message = defenseName + " a perdu " + damage + " points de vie. \u2764 " + life;
-        String line = generateContentLine("bold", message, true);
+        String line = generateContentLine("bold", message, false);
         return line;
     }
 
