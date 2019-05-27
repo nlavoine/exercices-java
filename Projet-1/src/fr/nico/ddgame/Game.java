@@ -223,29 +223,53 @@ class Game {
         int nbPlayers = Integer.parseInt(sc.nextLine());
 
         for(int i= 0 ; i < nbPlayers; i++){
+            int currTry = 1;
+            int maxTries = 3;
+            Boolean trying = true;
 
-            System.out.println(WinInitPlayer.askPlayerName(i+1));
+            while(trying) {
+                try {
+                    tryToCreatePlayer(i);
+                } catch (FighterUnknownException e) {
 
-            String fighterName = sc.nextLine();
+                    System.err.println("Classe saisie inexistante. Veuillez séléctionner une classe dans la liste.");
 
-            System.out.println(WinInitPlayer.emptyLine());
-            System.out.println(WinInitPlayer.askPlayerType());
-
-            for(int j = 0; j < FIGHTERS.length; j++){
-                System.out.println(WinInitPlayer.typeOptions(j+1, FIGHTERS[j]));
+                    if(currTry == maxTries) {
+                        trying = false;
+                        System.err.println("Le Fighter n'a pas pu être créé.");
+                    }
+                    currTry++;
+                    //e.printStackTrace();
+                }
             }
 
-            int fighterType = Integer.parseInt(sc.nextLine())-1;
-
-            try {
-                fightersList.get("players").add(createFighter(fighterType, fighterName));
-            } catch (FighterUnknownException e) {
-                e.printStackTrace();
-                askOptionsFighter();
-            }
         }
 
         System.out.println(WinInitPlayer.footer());
+    }
+
+    private void tryToCreatePlayer(int i) throws FighterUnknownException{
+        WindowInitPlayer WinInitPlayer = new WindowInitPlayer();
+        System.out.println(WinInitPlayer.askPlayerName(i+1));
+
+        String fighterName = sc.nextLine();
+
+        System.out.println(WinInitPlayer.askPlayerType());
+
+        for(int j = 0; j < FIGHTERS.length; j++){
+            System.out.println(WinInitPlayer.typeOptions(j+1, FIGHTERS[j]));
+        }
+
+        int fighterType = Integer.parseInt(sc.nextLine())-1;
+
+        if(fighterType >= 0 && fighterType < FIGHTERS.length){
+            fightersList.get("players").add(createFighter(fighterType, fighterName));
+        } else {
+            //e.printStackTrace();
+            throw new FighterUnknownException("Classe saisie inexistante. Veuillez séléctionner une classe dans la liste.");
+            //askOptionsFighter();
+        }
+
     }
 
 
@@ -308,14 +332,6 @@ class Game {
         return fighter;
     }
 
-    //cross : ♰
-    //cross 2: ✝
-    //Swords ⚔
-    //Hammer : ⚒
-    //Hermes : ⚚
-    //Pen : ✎
-    // magnifying : ⌕
-    // eye : ☉
 
     /**
      * Display all FIGHTERS info for a team
@@ -524,6 +540,13 @@ class Game {
             }
         }
     }
-
-
 }
+
+//cross : ♰
+//cross 2: ✝
+//Swords ⚔
+//Hammer : ⚒
+//Hermes : ⚚
+//Pen : ✎
+// magnifying : ⌕
+// eye : ☉
