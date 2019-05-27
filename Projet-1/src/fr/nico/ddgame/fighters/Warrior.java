@@ -2,6 +2,8 @@ package fr.nico.ddgame.fighters;
 
 import fr.nico.ddgame.items.Stuff;
 
+import java.util.Scanner;
+
 public class Warrior extends Fighter {
 
     private Stuff weapon;
@@ -15,10 +17,7 @@ public class Warrior extends Fighter {
     private int life;
     private int power;
 
-    /**
-     * @param fighterWeapon     Object : "Stuff" du warrior
-     * @param fighterShield            String : "Shield" du warrior
-     */
+
     public Warrior() {
         this.life = generateLife()*5;
         this.power = generatePower();
@@ -105,5 +104,53 @@ public class Warrior extends Fighter {
         return this.power;
     }
 
-    /************************************/
+    /**
+     * @param fighter**********************************/
+
+    @Override
+    public boolean doAction(Fighter fighter) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("]] Vous affrontez " + this.getName() + " [[");
+        System.out.println("Votre vie : " + fighter.getLife() + " || Ennemi : " + this.getLife());
+        System.out.println(" ");
+        boolean fighterIsBeaten = false;
+        boolean ennemyIsBeaten = false;
+        int damages;
+        while(!ennemyIsBeaten && !fighterIsBeaten) {
+            int randWinner = (int) (Math.random() * (1 + 1));
+
+            switch (randWinner) {
+                case 0:
+
+                    damages = this.getAttackPower();
+                    fighter.setLife(fighter.getLife()-damages);
+                    System.out.println("|           L'ennemi, vous a touché");
+                    System.out.println("|           Il vous a infligé " + damages + " points de dégats");
+                    break;
+                case 1:
+                    damages = fighter.getAttackPower();
+                    this.setLife(this.getLife()-damages);
+                    System.out.println("|           Vous avez touché l'ennemi");
+                    System.out.println("|           vous lui avez infligé " + damages + " points de dégats");
+                    break;
+            }
+            if(fighter.getLife()<=0) {
+                System.out.println("|           Vous êtes morts");
+                fighterIsBeaten = true;
+            }else if(this.getLife()<=0){
+                System.out.println("|           L'ennemi est mort");
+                ennemyIsBeaten =  true;
+
+            }else{
+                System.out.println("|           --------------    Fin du Round    --------------");
+                System.out.println("|           Votre vie : " + fighter.getLife() + " || Ennemi : " + this.getLife());
+
+                System.out.println("|           (\"Entrer\" pour attaquer)");
+                sc.nextLine();
+            }
+
+
+        }
+        return fighterIsBeaten;
+    }
 }

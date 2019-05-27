@@ -3,13 +3,14 @@ package fr.nico.ddgame;
 //import java.lang.reflect.Constructor;
 //import java.lang.reflect.InvocationTargetException;
 import fr.nico.ddgame.Exceptions.FighterUnknownException;
+import fr.nico.ddgame.bonus.*;
 import fr.nico.ddgame.fighters.Fighter;
 import fr.nico.ddgame.items.*;
 import fr.nico.ddgame.ui.*;
+import fr.nico.ddgame.board.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -18,8 +19,9 @@ import java.util.Scanner;
 class Game {
 
     private  Scanner sc = new Scanner(System.in);
+    private static final String[] FOODS = {"Apple", "Elixir"};
     private static final String[] FIGHTERS = {"Warrior", "Wizard"};
-    private static final String[] OPTIONS = {"Afficher les joueurs", "Modifier les joueurs","Afficher les adversaires", "Modifier les adversaires", "⚔ Combattre ! ⚔"};
+    private static final String[] OPTIONS = {"Afficher les joueurs", "Modifier les joueurs","Afficher les adversaires", "Modifier les adversaires", "⚔ Combat dans l'arène ⚔", "⚔ Combat dans le Donjon ⚔"};
 
     private static final String[] WEAPONS = {"Hache de bucheron", "Tournevis bélliqueux"};
     private static final String[] SHIELDS = {"Casque en mousse", "Plastron MDF"};
@@ -28,27 +30,24 @@ class Game {
     private static final String[] SORTS = {"Etincelle du marchand", "Souffle fétide"};
     private static final String[] PHILTERS = {"Potion de soin min", "Plume de Phoenix"};
 
-
-
     private static final String[] OPPONENTS_NAMES = {"Beus","Dorusmoricu","Eodi","Falem","Hipo","Hontrote","Iaxenteran","Kroneul","Krseta","Krus","Leulaeagore","Lionusury","Maise","Mpynasytei","Thaeg","Tussiare","Visiteres","Visust","Viusopel","Xemel"};
 
-
-    private static ArrayList<Stuff> weaponList = new ArrayList<>();
-    private static ArrayList<Stuff> sortList = new ArrayList<>();
-    private static ArrayList<Stuff> shieldList = new ArrayList<>();
-    private static ArrayList<Stuff> philterList = new ArrayList<>();
-
-
-    private static ArrayList<Fighter> playerList = new ArrayList<>();
-    private static ArrayList<Fighter> opponentList = new ArrayList<>();
-
-    private static HashMap<String, ArrayList<Stuff>> stuffList = new HashMap<>();
-    private static HashMap<String, ArrayList<Stuff>> secondaryList = new HashMap<>();
-    private static HashMap<String, ArrayList<Fighter>> fightersList = new HashMap<>();
-
     private static final int TOTAL_TILES = 15;
-    private static final String[] TILES = {"Ennemy", "Food"};
-    private static final List<String> board = new ArrayList<>();
+    private static final String[] TILES = {"TileEnnemy", "TileFood"};
+
+    private ArrayList<Stuff> weaponList = new ArrayList<>();
+    private ArrayList<Stuff> sortList = new ArrayList<>();
+    private ArrayList<Stuff> shieldList = new ArrayList<>();
+    private ArrayList<Stuff> philterList = new ArrayList<>();
+
+    private ArrayList<Fighter> playerList = new ArrayList<>();
+    private ArrayList<Fighter> opponentList = new ArrayList<>();
+
+    private HashMap<String, ArrayList<Stuff>> stuffList = new HashMap<>();
+    private HashMap<String, ArrayList<Stuff>> secondaryList = new HashMap<>();
+    private HashMap<String, ArrayList<Fighter>> fightersList = new HashMap<>();
+
+    private final ArrayList<Tile> board = new ArrayList<>();
 
     /**
      * Init game lists
@@ -71,11 +70,12 @@ class Game {
      */
     void play(){
         printTitle();
-        initBoard();
+
         initWeapons();
         initSorts();
         initShields();
         initPhilters();
+        initBoard();
         initPlayers();
         initOpponents();
         showOptions();
@@ -110,8 +110,32 @@ class Game {
     private void initBoard(){
         for(int i = 0; i<Game.TOTAL_TILES; i++){
             int randTileType = ((int)( Math.random()*( (Game.TILES.length-1) + 1 ) ));
-            Game.board.add(Game.TILES[randTileType]);
-            System.out.println("Case N°" + i + " + " + Game.board.get(i));
+
+            int randType;
+
+
+            String fullPath = "fr.nico.ddgame.board."+TILES[randTileType];
+            Tile currTile = null;
+
+
+            switch (TILES[randTileType]){
+                case "TileEnnemy":
+                    randType = (int)( Math.random()*( (FIGHTERS.length-1) + 1 ) );
+                    try {
+                        currTile = new TileEnnemy(createFighter(randType, OPPONENTS_NAMES[0]));
+                    } catch (FighterUnknownException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "TileFood" :
+                    randType = (int)( Math.random()*( (FOODS.length-1) + 1 ) );
+                    currTile = new TileFood(createFood(FOODS[randType]));
+
+
+                    break;
+            }
+
+            board.add(currTile);
         }
     }
 
@@ -186,6 +210,10 @@ class Game {
                     goFighting = true;
                     fight();
                     break;
+                case 6:
+                    goFighting = true;
+                    fightTheDungeon();
+                    break;
             }
         }
     }
@@ -225,14 +253,16 @@ class Game {
         for(int i= 0 ; i < nbPlayers; i++){
             int currTry = 1;
             int maxTries = 3;
-            Boolean trying = true;
+            boolean trying = true;
 
             while(trying) {
                 try {
-                    tryToCreatePlayer(i);
+                    fightersList.get("players").add(tryToCreatePlayer(i));
+                    trying = false;
                 } catch (FighterUnknownException e) {
 
-                    System.err.println("Classe saisie inexistante. Veuillez séléctionner une classe dans la liste.");
+                    System.err.println(e.getMessage());
+                    System.err.println("Veuillez séléctionner une classe dans la liste.");
 
                     if(currTry == maxTries) {
                         trying = false;
@@ -248,7 +278,7 @@ class Game {
         System.out.println(WinInitPlayer.footer());
     }
 
-    private void tryToCreatePlayer(int i) throws FighterUnknownException{
+    private Fighter tryToCreatePlayer(int i) throws FighterUnknownException{
         WindowInitPlayer WinInitPlayer = new WindowInitPlayer();
         System.out.println(WinInitPlayer.askPlayerName(i+1));
 
@@ -263,10 +293,10 @@ class Game {
         int fighterType = Integer.parseInt(sc.nextLine())-1;
 
         if(fighterType >= 0 && fighterType < FIGHTERS.length){
-            fightersList.get("players").add(createFighter(fighterType, fighterName));
+            return createFighter(fighterType, fighterName);
         } else {
             //e.printStackTrace();
-            throw new FighterUnknownException("Classe saisie inexistante. Veuillez séléctionner une classe dans la liste.");
+            throw new FighterUnknownException("Classe saisie inexistante.");
             //askOptionsFighter();
         }
 
@@ -316,7 +346,7 @@ class Game {
         int randStuff = (int)( Math.random()*( (stuffList.get(fighterType).size()-1) + 1 ) );
         int randSecondary = (int)( Math.random()*( (secondaryList.get(fighterType).size()-1) + 1 ) );
 
-        String fullPath = "fr.nico.ddgame.FIGHTERS."+fighterType;
+        String fullPath = "fr.nico.ddgame.fighters."+fighterType;
         Fighter fighter = null;
         try {
             Class<?> clazz = Class.forName(fullPath);
@@ -330,6 +360,19 @@ class Game {
         fighter.setName(fighterName);
         fighter.setType(FIGHTERS[fighterNumber]);
         return fighter;
+    }
+
+    private Food createFood(String foodType){
+        String fullPath = "fr.nico.ddgame.bonus."+foodType;
+        Food foodItem = null;
+
+        try {
+            Class<?> clazz = Class.forName(fullPath);
+            foodItem = ((Food)clazz.newInstance());
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return foodItem;
     }
 
 
@@ -539,6 +582,104 @@ class Game {
                 System.out.println(WinDoAttack.fighterRemainingPoints(defenseFighter.getName(), damages, defenseFighter.getLife()));
             }
         }
+    }
+
+
+    private void fightTheDungeon(){
+        WindowFighterSelectEdit WinFighterSelectEdit = new WindowFighterSelectEdit();
+        System.out.println(WinFighterSelectEdit.header());
+
+        int index = 0;
+        for (Fighter player : fightersList.get("players")){
+            System.out.println(WinFighterSelectEdit.options(index+1, player.getName()));
+            index++;
+        }
+        int selectedPlayer = (Integer.parseInt(sc.nextLine())-1);
+        System.out.println(WinFighterSelectEdit.footer());
+
+        boolean dungeonLost = playDungeonTurn(playerList.get(selectedPlayer));
+        if(dungeonLost){
+            System.out.println("L'aventure dans le donjon est terminée");
+        }else{
+            System.out.println("Bravo vous avez terminé le donjon !");
+        }
+        showOptions();
+    }
+
+    private boolean playDungeonTurn(Fighter fighter){
+        System.out.println("Vous entrez dans le Donjon !");
+        System.out.println("Vous avez " + fighter.getLife() + " points de vie \n");
+
+        boolean playerIsDead = false;
+        for(int i = 0; i< board.size(); i++){
+            generateBoard(i);
+            playerIsDead = board.get(i).doAction(fighter);
+            if(playerIsDead){
+                break;
+            }
+            System.out.println("(\"Entrer\" pour continuer)");
+            sc.nextLine();
+        }
+        return playerIsDead;
+    }
+
+    private void generateBoard(int currTile){
+        String topBoard = "┌";
+        for(int i=0; i<board.size(); i++){
+            if(i == board.size()-1){
+                topBoard += "───";
+            }else {
+                topBoard += "────";
+            }
+        }
+        topBoard += "┐";
+
+        String bodyBoard = "";
+        for(int i=0; i<board.size(); i++){
+            bodyBoard += "│";
+            if(currTile == i){
+                bodyBoard += " ☿";
+            }else{
+                bodyBoard += "  ";
+            }
+            if(i == board.size()-1){
+                bodyBoard += " │";
+            }else{
+                bodyBoard += " ";
+            }
+
+        }
+        String bodyBoard2 = "";
+        for(int i=0; i<board.size(); i++){
+            bodyBoard2 += "│";
+            if(board.get(i).getClass().getSimpleName().equals("TileEnnemy")){
+                bodyBoard2 += " ♉";
+            }else if(board.get(i).getClass().getSimpleName().equals("TileFood")){
+                bodyBoard2 += " ♥";
+            }
+            if(i == board.size()-1){
+                bodyBoard2 += " │";
+            }else{
+                bodyBoard2 += " ";
+            }
+
+        }
+
+
+        String bottomBoard = "└";
+        for(int i=0; i<board.size(); i++){
+            if(i == board.size()-1){
+                bottomBoard += "───";
+            }else {
+                bottomBoard += "────";
+            }
+        }
+        bottomBoard += "┘";
+
+        System.out.println(topBoard);
+        System.out.println(bodyBoard);
+        System.out.println(bodyBoard2);
+        System.out.println(bottomBoard);
     }
 }
 

@@ -53,4 +53,6 @@ public abstract class Fighter {
     public abstract void setPower(int fighterPower);
 
     public abstract int getPower();
+
+    public abstract boolean doAction(Fighter fighter);
 }
