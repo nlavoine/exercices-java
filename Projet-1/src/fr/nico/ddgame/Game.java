@@ -95,6 +95,7 @@ class Game {
                 } catch (FighterUnknownException e) {
                     e.printStackTrace();
                 }
+                System.out.println(WinInitPlayer.footer());
                 initBoard();
                 fightTheDungeon();
                 break;
@@ -628,8 +629,12 @@ class Game {
     }
 
     private boolean playDungeonTurn(Fighter fighter){
-        System.out.println("Vous entrez dans le Donjon !");
+        System.out.println("Bienvenu au Donjon !");
         System.out.println("Vous avez " + fighter.getLife() + " points de vie \n");
+
+        System.out.println("[Entrer] ... dans le donjon");
+        sc.nextLine();
+
 
         boolean playerIsDead = false;
         for(int i = 0; i< board.size(); i++){
@@ -638,11 +643,56 @@ class Game {
             if(playerIsDead){
                 break;
             }
-            System.out.println("(\"Entrer\" pour continuer)");
-            sc.nextLine();
+
+            if(i < (board.size()-1)) {
+                System.out.println("Vous avez " + fighter.getLife() + " points de vie \n");
+                boolean itemUsed = fighter.chooseAction("board");
+                /*System.out.println("--> Que souhaitez-vous faire ?");
+                if (fighter.getBackpack().getBackpackContent().size() > 0) {
+                    System.out.println("[1] Utiliser un objet de l'inventaire");
+                }
+                System.out.println("[Entrer] Avancer dans le donjon");
+
+                String selectedOption = sc.nextLine();
+
+
+                switch (selectedOption) {
+                    case "1":
+                        int backpackOption = fighter.showBackpack();
+                        if (backpackOption >= 0) {
+                            fighter.getBackpack().getBackpackContent().get(backpackOption).getUsed(fighter);
+                            System.out.println("[Entrer] Avancer dans le donjon");
+                            sc.nextLine();
+                        } else {
+                            System.out.println("[Entrer] Avancer dans le donjon");
+                            sc.nextLine();
+                        }
+
+                        break;
+                }*/
+            }
+
+            //System.out.println("(\"Entrer\" pour continuer)");
+            //sc.nextLine();
         }
         return playerIsDead;
     }
+
+    /*private int showBackpack(Fighter fighter) {
+        System.out.println("-----------    Contenu de votre sac à dos   -----------");
+
+
+        if (fighter.getBackpack().getBackpackContent().size()>0) {
+            for (int i = 0; i < fighter.getBackpack().getBackpackContent().size(); i++) {
+                System.out.println("[" + (i + 1) + "] " + fighter.getBackpack().getBackpackContent().get(i).getClass().getSimpleName() + " (" + fighter.getBackpack().getBackpackContent().get(i).getPowerUp() + ")");
+            }
+        }
+        System.out.println("[0] Retour");
+
+        int selectedOption = Integer.parseInt(sc.nextLine());
+        return (selectedOption-1);
+    }*/
+
 
     private void generateBoard(int currTile){
         String topBoard = "┌";
