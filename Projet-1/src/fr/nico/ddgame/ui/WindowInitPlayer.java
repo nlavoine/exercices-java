@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 public class WindowInitPlayer extends UiBox {
 
-    private static final String TITLE = "Nombres de joueurs ? ";
     private static final String QUESTION_NAME = "Renseigner le nom du combattant";
     private static final String QUESTION_TYPE = "Selection du type";
     private static final HashMap<String, String> icons = new HashMap<>();
@@ -21,9 +20,9 @@ public class WindowInitPlayer extends UiBox {
         return line;
     }
 
-    public String header(){
+    public String header(String title){
         String header = generateUpperLine("medium")+"\n";
-        header += generateContentLine("medium", WindowInitPlayer.TITLE, false) + "\n";
+        header += generateContentLine("medium", title, false) + "\n";
         header += generateFilledLine("slim");
         return header;
     }

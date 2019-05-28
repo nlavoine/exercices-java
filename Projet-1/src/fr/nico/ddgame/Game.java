@@ -19,9 +19,10 @@ import java.util.Scanner;
 class Game {
 
     private  Scanner sc = new Scanner(System.in);
+    private static final String[] GAME_MODES = {"◌ Combattre dans l'arène", "♜ Combattre dans le Donjon"};
     private static final String[] FOODS = {"Apple", "Elixir"};
     private static final String[] FIGHTERS = {"Warrior", "Wizard"};
-    private static final String[] OPTIONS = {"Afficher les joueurs", "Modifier les joueurs","Afficher les adversaires", "Modifier les adversaires", "⚔ Combat dans l'arène ⚔", "⚔ Combat dans le Donjon ⚔"};
+    private static final String[] OPTIONS = {"Afficher les joueurs", "Modifier les joueurs","Afficher les adversaires", "Modifier les adversaires", "⚔ Combattre !"};
 
     private static final String[] WEAPONS = {"Hache de bucheron", "Tournevis bélliqueux"};
     private static final String[] SHIELDS = {"Casque en mousse", "Plastron MDF"};
@@ -31,6 +32,8 @@ class Game {
     private static final String[] PHILTERS = {"Potion de soin min", "Plume de Phoenix"};
 
     private static final String[] OPPONENTS_NAMES = {"Beus","Dorusmoricu","Eodi","Falem","Hipo","Hontrote","Iaxenteran","Kroneul","Krseta","Krus","Leulaeagore","Lionusury","Maise","Mpynasytei","Thaeg","Tussiare","Visiteres","Visust","Viusopel","Xemel"};
+    private static final String[] MONSTERS = {"Cavalier noir", "Corbeau", "Doppelgänger", "Dragon", "Fée", "Loup-garou", "Zombies", "Béhémot", "Léviathan", "Basilic", "Cerbère", "Chimère", "Harpie", "Hydre de Lerne", "Licorne", "Méduse", "Minotaure", "Pégase", "Sphinx"};
+
 
     private static final int TOTAL_TILES = 15;
     private static final String[] TILES = {"TileEnnemy", "TileFood"};
@@ -75,10 +78,27 @@ class Game {
         initSorts();
         initShields();
         initPhilters();
-        initBoard();
-        initPlayers();
-        initOpponents();
-        showOptions();
+
+        int selectedMode = initGameMode();
+
+        switch (selectedMode){
+            case 1 :
+                initPlayers();
+                initOpponents();
+                showOptions();
+                break;
+            case 2:
+                WindowInitPlayer WinInitPlayer = new WindowInitPlayer();
+                System.out.println(WinInitPlayer.header("Création de votre combattant"));
+                try {
+                    fightersList.get("players").add(tryToCreatePlayer(0));
+                } catch (FighterUnknownException e) {
+                    e.printStackTrace();
+                }
+                initBoard();
+                fightTheDungeon();
+                break;
+        }
     }
 
     /**
@@ -104,32 +124,47 @@ class Game {
         System.out.println("                                                                                                          ");
     }
 
+    private int initGameMode(){
+        WindowGameMode WinGameMode = new WindowGameMode();
+        System.out.println(WinGameMode .header());
+
+        int i = 0;
+        for(String mode : GAME_MODES){
+            System.out.println(WinGameMode.option(i+1, mode));
+            i++;
+        }
+        System.out.println(WinGameMode.footer());
+
+        return Integer.parseInt(sc.nextLine());
+
+    }
     /**
      * Create set of TILES
      */
     private void initBoard(){
         for(int i = 0; i<Game.TOTAL_TILES; i++){
             int randTileType = ((int)( Math.random()*( (Game.TILES.length-1) + 1 ) ));
+            int randMonsterType = (int)( Math.random()*( (MONSTERS.length-1) + 1 ) );
 
-            int randType;
+            int randFighterType;
 
 
-            String fullPath = "fr.nico.ddgame.board."+TILES[randTileType];
+            //String fullPath = "fr.nico.ddgame.board."+TILES[randTileType];
             Tile currTile = null;
 
 
             switch (TILES[randTileType]){
                 case "TileEnnemy":
-                    randType = (int)( Math.random()*( (FIGHTERS.length-1) + 1 ) );
+                    randFighterType = (int)( Math.random()*( (FIGHTERS.length-1) + 1 ) );
                     try {
-                        currTile = new TileEnnemy(createFighter(randType, OPPONENTS_NAMES[0]));
+                        currTile = new TileEnnemy(createFighter(randFighterType, MONSTERS[randMonsterType]));
                     } catch (FighterUnknownException e) {
                         e.printStackTrace();
                     }
                     break;
                 case "TileFood" :
-                    randType = (int)( Math.random()*( (FOODS.length-1) + 1 ) );
-                    currTile = new TileFood(createFood(FOODS[randType]));
+                    randFighterType = (int)( Math.random()*( (FOODS.length-1) + 1 ) );
+                    currTile = new TileFood(createFood(FOODS[randFighterType]));
 
 
                     break;
@@ -210,10 +245,6 @@ class Game {
                     goFighting = true;
                     fight();
                     break;
-                case 6:
-                    goFighting = true;
-                    fightTheDungeon();
-                    break;
             }
         }
     }
@@ -245,7 +276,7 @@ class Game {
     private void initPlayers(){
 
         WindowInitPlayer WinInitPlayer = new WindowInitPlayer();
-        System.out.println(WinInitPlayer.header());
+        System.out.println(WinInitPlayer.header("Nombres de joueurs ?"));
 
 
         int nbPlayers = Integer.parseInt(sc.nextLine());
@@ -586,24 +617,14 @@ class Game {
 
 
     private void fightTheDungeon(){
-        WindowFighterSelectEdit WinFighterSelectEdit = new WindowFighterSelectEdit();
-        System.out.println(WinFighterSelectEdit.header());
 
-        int index = 0;
-        for (Fighter player : fightersList.get("players")){
-            System.out.println(WinFighterSelectEdit.options(index+1, player.getName()));
-            index++;
-        }
-        int selectedPlayer = (Integer.parseInt(sc.nextLine())-1);
-        System.out.println(WinFighterSelectEdit.footer());
-
-        boolean dungeonLost = playDungeonTurn(playerList.get(selectedPlayer));
+        boolean dungeonLost = playDungeonTurn(playerList.get(0));
         if(dungeonLost){
             System.out.println("L'aventure dans le donjon est terminée");
         }else{
             System.out.println("Bravo vous avez terminé le donjon !");
         }
-        showOptions();
+        initGameMode();
     }
 
     private boolean playDungeonTurn(Fighter fighter){
@@ -680,6 +701,7 @@ class Game {
         System.out.println(bodyBoard);
         System.out.println(bodyBoard2);
         System.out.println(bottomBoard);
+        System.out.println(" ");
     }
 }
 

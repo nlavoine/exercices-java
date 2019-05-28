@@ -5,25 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58356835-7f0b-4b4a-9a04-30a34ce5f345" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/bonus/Apple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/bonus/Elixir.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/bonus/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/Backpack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowGameMode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/board/Ennemy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/board/Food.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/board/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/board/Tile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/fighters/Fighter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/fighters/Fighter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/fighters/Warrior.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/fighters/Warrior.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/fighters/Wizard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/fighters/Wizard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/ui/WindowInitPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet-1/fr/nico/ddgame/ui/WindowInitPlayer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/board/Ennemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/board/TileEnnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/board/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/board/TileFood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/board/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/board/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Fighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Fighter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowInitPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowInitPlayer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,20 +34,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="20" column="49" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Main.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Backpack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="102">
+              <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,84 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Fighter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/bonus/Food.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/bonus/Apple.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/bonus/Elixir.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="90" selection-start-line="11" selection-start-column="90" selection-end-line="11" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/board/TileEnnemy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-              <folding>
-                <element signature="e#180#181#0" expanded="true" />
-                <element signature="e#217#218#0" expanded="true" />
-                <element signature="e#322#323#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/board/TileFood.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#137#138#0" expanded="true" />
-                <element signature="e#174#175#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="144" column="99" selection-start-line="144" selection-start-column="99" selection-end-line="144" selection-end-column="99" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="763">
-              <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+            <state relative-caret-position="134">
+              <caret line="59" column="46" lean-forward="true" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -173,6 +91,9 @@
       <find>doAttack</find>
       <find>try</find>
       <find>FIGH</find>
+      <find>err</find>
+      <find>opt</find>
+      <find>WinInitPlayer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -203,7 +124,6 @@
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/display.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/box.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowInitOpponent.java" />
-        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowInitPlayer.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowMenu.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFightersList.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowFighterSelectEdit.java" />
@@ -220,16 +140,19 @@
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/board/ennemy.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/items.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/board/Tiles.java" />
-        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Fighter.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/board/Tile.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/board/TileEnnemy.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/bonus/Food.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/bonus/Apple.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/bonus/Elixir.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/board/TileFood.java" />
-        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/Game.java" />
-        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java" />
         <option value="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Fighter.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowGameMode.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowInitPlayer.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/Game.java" />
+        <option value="$PROJECT_DIR$/src/fr/nico/ddgame/Backpack.java" />
       </list>
     </option>
   </component>
@@ -250,8 +173,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -275,26 +196,14 @@
               <item name="Projet-1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ddgame" type="462c0819:PsiDirectoryNode" />
-              <item name="board" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Projet 1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projet-1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ddgame" type="462c0819:PsiDirectoryNode" />
               <item name="bonus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Projet 1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projet-1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ddgame" type="462c0819:PsiDirectoryNode" />
-              <item name="fighters" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -369,12 +278,13 @@
       <workItem from="1558505742998" duration="24446000" />
       <workItem from="1558592983604" duration="22677000" />
       <workItem from="1558679827217" duration="19784000" />
-      <workItem from="1558938885604" duration="22982000" />
+      <workItem from="1558938885604" duration="23087000" />
+      <workItem from="1559024883211" duration="4152000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161683000" />
+    <option name="totallyTimeSpent" value="165940000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -389,7 +299,7 @@
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945474" visible="true" weight="0.14941892" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945474" visible="true" weight="0.15107913" />
       <window_info id="Designer" order="1" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -403,13 +313,13 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293348" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.1570338" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.122137405" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.25299892" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Run Dashboard" order="13" weight="0.7949836" />
+      <window_info anchor="bottom" id="Run Dashboard" order="13" weight="0.7764449" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -578,20 +488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowInitPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowInitOpponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -652,24 +548,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Items.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Items.java" />
     <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/lang/Integer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
           <caret line="202" column="21" selection-start-line="202" selection-start-column="18" selection-end-line="202" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/board/Tile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -684,36 +567,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Fighter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/board/Tile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/board/TileEnnemy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-          <folding>
-            <element signature="e#180#181#0" expanded="true" />
-            <element signature="e#217#218#0" expanded="true" />
-            <element signature="e#322#323#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -745,32 +602,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/board/TileEnnemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+          <folding>
+            <element signature="e#322#323#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/board/TileFood.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="255">
           <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#137#138#0" expanded="true" />
-            <element signature="e#174#175#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="20" column="49" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="763">
-          <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -779,8 +631,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Warrior.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="144" column="99" selection-start-line="144" selection-start-column="99" selection-end-line="144" selection-end-column="99" />
+        <state relative-caret-position="729">
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Wizard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="882">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowGameMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/ui/WindowInitPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/fighters/Fighter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="59" column="46" lean-forward="true" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/nico/ddgame/Backpack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
